@@ -5,3 +5,6 @@ cluster:
    #- https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/ip-pool.yml
    - https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/main/deploy/standalone-install.yaml
    - https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+   - https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/install-cilium.yaml
+   - https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/cilium-gateway-api.yaml
+   - https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/nginx.yaml
