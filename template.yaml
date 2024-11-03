@@ -3,18 +3,18 @@ name: talos-homelab
 labels:
   template: true
   cni: none
-  kubespan: enabled
+  #kubespan: enabled
 kubernetes:
   version: v1.31.2
 talos:
   version: v1.8.2
 features:
-  enableWorkloadProxy: true
+  enableWorkloadProxy: false
   backupConfiguration:
     interval: 1h0m0s
 patches:
-  - name: kubespan-enabled
-    file: patches/kubespan.yml
+  #- name: kubespan-enabled
+  #  file: patches/kubespan.yml
   - name: no-cni
     file: patches/cni.yml
   - name: disable-kubeproxy
@@ -23,10 +23,10 @@ patches:
     file: patches/extraManifests.yml
   - name: metric-server
     file: patches/metrics-server.yml
-systemExtensions:
-  - siderolabs/qemu-guest-agent
-  - siderolabs/iscsi-tools
-  - siderolabs/util-linux-tools
+#systemExtensions:
+  #- siderolabs/qemu-guest-agent
+  #- siderolabs/iscsi-tools
+  #- siderolabs/util-linux-tools
 ---
 kind: ControlPlane
 machineClass:
