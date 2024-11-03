@@ -3,9 +3,6 @@ kind: Deployment
 metadata:
   name: my-nginx
 spec:
-  ports:
-  - port: 9080
-    name: http
   selector:
     matchLabels:
       run: my-nginx
@@ -19,4 +16,20 @@ spec:
       - name: my-nginx
         image: nginx
         ports:
-        - containerPort: 9080
+            - name: my-nginx-web
+              containerPort: 9080
+              protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-nginx-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-nginx
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: my-nginx-web
