@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: my-nginx
 spec:
+  ports:
+  - port: 9080
+    name: http
   selector:
     matchLabels:
       run: my-nginx
