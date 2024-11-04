@@ -1,3 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx-service
+spec:
+  ports:
+    - name: http
+      port: 9080
+  selector:
+    app: my-nginx
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: my-nginx-account
+  labels:
+    account: my-nginx
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -12,6 +30,7 @@ spec:
       labels:
         run: my-nginx
     spec:
+      serviceAccountName: my-nginx-account
       containers:
       - name: my-nginx
         image: nginx
