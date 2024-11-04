@@ -25,7 +25,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /details
+        value: /
     backendRefs:
     - name: my-nginx-service
       port: 9080
