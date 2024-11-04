@@ -9,6 +9,13 @@ spec:
   selector:
     app: my-nginx
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: my-nginx-account
+  labels:
+    account: my-nginx
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -23,8 +30,11 @@ spec:
       labels:
         run: my-nginx
     spec:
+      serviceAccountName: my-nginx-account
       containers:
       - name: my-nginx
         image: nginx
         ports:
         - containerPort: 9080
+        securityContext:
+          runAsUser: 1000
