@@ -28,4 +28,4 @@ spec:
         value: /
     backendRefs:
     - name: my-nginx-service
-      port: 9080
+      port: 80
