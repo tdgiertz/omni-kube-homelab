@@ -21,6 +21,8 @@ spec:
   parentRefs:
   - name: my-gateway
     namespace: default
+  hostnames:
+  - test.apps.timgiertz.com
   rules:
   - matches:
     - path:
