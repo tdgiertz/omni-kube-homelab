@@ -26,7 +26,7 @@ metadata:
   name: letsencrypt-prod
   namespace: cert-manager
 data:
-  access-token: Hnlxz1TYMkIUq_9s8nR1k93gFfPeIMdMPveRTyB2O7M
+  access-token: SG5seHoxVFlNa0lVcV85czhuUjFrOTNnRmZQZUlNZE1QdmVSVHlCMk83TQ==
 ---
 apiVersion: v1
 kind: Secret
