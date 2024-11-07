@@ -1,24 +1,3 @@
-apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
-metadata:
-  name: my-gateway
-  annotations:
-    cert-manager.io/issuer: letsencrypt-io
-spec:
-  gatewayClassName: cilium
-  listeners:
-    - name: http
-      hostname: apps.timgiertz.com
-      port: 443
-      protocol: HTTPS
-      allowedRoutes:
-        namespaces:
-          from: All
-      tls:
-        mode: Terminate
-        certificateRefs:
-        - kind: Secret
-          name: wildcard-apps-timgiertz-com-tls
 ---
 apiVersion: v1
 kind: Secret
@@ -70,13 +49,34 @@ spec:
   secretName: apps-timgiertz-com-tls
 ---
 apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: my-gateway
+  annotations:
+    cert-manager.io/issuer: letsencrypt-io
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: http
+      hostname: apps.timgiertz.com
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+        - kind: Secret
+          name: wildcard-apps-timgiertz-com-tls
+---
+apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: http-app-1
 spec:
   parentRefs:
   - name: my-gateway
-    namespace: default
   hostnames:
   - test.apps.timgiertz.com
   rules:
