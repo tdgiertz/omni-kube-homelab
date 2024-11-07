@@ -18,7 +18,7 @@ spec:
         mode: Terminate
         certificateRefs:
         - kind: Secret
-          name: wildcard-timgiertz-com-tls
+          name: wildcard-apps-timgiertz-com-tls
 ---
 apiVersion: v1
 kind: Secret
@@ -39,7 +39,7 @@ stringData:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: timgiertz-issuer
+  name: timgiertz-prod-issuer
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
@@ -56,20 +56,18 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: timgiertz-com-tls
+  name: apps-timgiertz-com-tls
 spec:
-  secretName: wildcard-timgiertz-com-tls
+  secretName: wildcard-apps-timgiertz-com-tls
   duration: 2160h0m0s # 90d
   renewBefore: 360h0m0s # 15d
   issuerRef:
-    name: my-issuer
-    kind: Issuer
-    group: cert-manager.io
-  commonName: "*.timgiertz.com"
+    name: timgiertz-prod-issuer
+    kind: ClusterIssuer
+  commonName: "*.apps.timgiertz.com"
   dnsNames:
-    - "timgiertz.com"
-    - "*.timgiertz.com"
-  secretName: timgiertz-com-tls
+    - "*.apps.timgiertz.com"
+  secretName: apps-timgiertz-com-tls
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
