@@ -1,17 +1,75 @@
----
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: my-gateway
+  annotations:
+    cert-manager.io/issuer: letsencrypt-io
 spec:
   gatewayClassName: cilium
   listeners:
-  - protocol: HTTP
-    port: 80
-    name: web-gw
-    allowedRoutes:
-      namespaces:
-        from: Same
+    - name: http
+      hostname: apps.timgiertz.com
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+        - kind: Secret
+          name: wildcard-timgiertz-com-tls
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: letsencrypt-prod
+  namespace: cert-manager
+data:
+  access-token: Hnlxz1TYMkIUq_9s8nR1k93gFfPeIMdMPveRTyB2O7M
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret-timgiertz
+type: Opaque
+stringData:
+  api-token: BlhmKffbxaovWC4Ukn56cxy3R-89rmprqYl5K0Qm
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: timgiertz-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: chewyc99@hotmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret-timgiertz
+            key: api-token
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: timgiertz-com-tls
+spec:
+  secretName: wildcard-timgiertz-com-tls
+  duration: 2160h0m0s # 90d
+  renewBefore: 360h0m0s # 15d
+  issuerRef:
+    name: my-issuer
+    kind: Issuer
+    group: cert-manager.io
+  commonName: "*.timgiertz.com"
+  dnsNames:
+    - "timgiertz.com"
+    - "*.timgiertz.com"
+  secretName: timgiertz-com-tls
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
