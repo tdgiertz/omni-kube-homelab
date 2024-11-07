@@ -1171,7 +1171,7 @@ spec:
       - cert-manager
       - cert-manager-acme
   scope: Namespaced
-    versions:
+  versions:
     - additionalPrinterColumns:
         - jsonPath: .status.state
           name: State
