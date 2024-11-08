@@ -10,7 +10,6 @@ cluster:
    - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.1.0/config/crd/standard/gateway.networking.k8s.io_grpcroutes.yaml
    - https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.1.0/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
    - https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/cilium-bgp.yaml
-   - https://github.com/cert-manager/cert-manager/releases/download/v1.16.1/cert-manager.crds.yaml
    - https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/cert-manager.yaml
    - https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/cilium-gateway-api.yaml
    - https://raw.githubusercontent.com/tdgiertz/omni-kube-homelab/main/manifests/nginx.yaml
