@@ -7,6 +7,7 @@ cluster:
         metadata:
           name: argocd
         ---
+        # This is an auto-generated file. DO NOT EDIT
         apiVersion: apiextensions.k8s.io/v1
         kind: CustomResourceDefinition
         metadata:
@@ -316,10 +317,6 @@ cluster:
                                   skipCrds:
                                     description: SkipCrds skips custom resource definition
                                       installation step (Helm's --skip-crds)
-                                    type: boolean
-                                  skipTests:
-                                    description: SkipTests skips test manifest installation
-                                      step (Helm's --skip-tests).
                                     type: boolean
                                   valueFiles:
                                     description: ValuesFiles is a list of Helm value files
@@ -686,10 +683,6 @@ cluster:
                                     skipCrds:
                                       description: SkipCrds skips custom resource definition
                                         installation step (Helm's --skip-crds)
-                                      type: boolean
-                                    skipTests:
-                                      description: SkipTests skips test manifest installation
-                                        step (Helm's --skip-tests).
                                       type: boolean
                                     valueFiles:
                                       description: ValuesFiles is a list of Helm value files
@@ -1172,10 +1165,6 @@ cluster:
                                 description: SkipCrds skips custom resource definition installation
                                   step (Helm's --skip-crds)
                                 type: boolean
-                              skipTests:
-                                description: SkipTests skips test manifest installation step
-                                  (Helm's --skip-tests).
-                                type: boolean
                               valueFiles:
                                 description: ValuesFiles is a list of Helm value files to
                                   use when generating a template
@@ -1532,10 +1521,6 @@ cluster:
                                 skipCrds:
                                   description: SkipCrds skips custom resource definition installation
                                     step (Helm's --skip-crds)
-                                  type: boolean
-                                skipTests:
-                                  description: SkipTests skips test manifest installation
-                                    step (Helm's --skip-tests).
                                   type: boolean
                                 valueFiles:
                                   description: ValuesFiles is a list of Helm value files to
@@ -2059,10 +2044,6 @@ cluster:
                                       description: SkipCrds skips custom resource definition
                                         installation step (Helm's --skip-crds)
                                       type: boolean
-                                    skipTests:
-                                      description: SkipTests skips test manifest installation
-                                        step (Helm's --skip-tests).
-                                      type: boolean
                                     valueFiles:
                                       description: ValuesFiles is a list of Helm value files
                                         to use when generating a template
@@ -2431,10 +2412,6 @@ cluster:
                                       skipCrds:
                                         description: SkipCrds skips custom resource definition
                                           installation step (Helm's --skip-crds)
-                                        type: boolean
-                                      skipTests:
-                                        description: SkipTests skips test manifest installation
-                                          step (Helm's --skip-tests).
                                         type: boolean
                                       valueFiles:
                                         description: ValuesFiles is a list of Helm value files
@@ -2955,10 +2932,6 @@ cluster:
                                             description: SkipCrds skips custom resource definition
                                               installation step (Helm's --skip-crds)
                                             type: boolean
-                                          skipTests:
-                                            description: SkipTests skips test manifest installation
-                                              step (Helm's --skip-tests).
-                                            type: boolean
                                           valueFiles:
                                             description: ValuesFiles is a list of Helm value
                                               files to use when generating a template
@@ -3345,10 +3318,6 @@ cluster:
                                             skipCrds:
                                               description: SkipCrds skips custom resource
                                                 definition installation step (Helm's --skip-crds)
-                                              type: boolean
-                                            skipTests:
-                                              description: SkipTests skips test manifest installation
-                                                step (Helm's --skip-tests).
                                               type: boolean
                                             valueFiles:
                                               description: ValuesFiles is a list of Helm value
@@ -3854,10 +3823,6 @@ cluster:
                                         description: SkipCrds skips custom resource definition
                                           installation step (Helm's --skip-crds)
                                         type: boolean
-                                      skipTests:
-                                        description: SkipTests skips test manifest installation
-                                          step (Helm's --skip-tests).
-                                        type: boolean
                                       valueFiles:
                                         description: ValuesFiles is a list of Helm value files
                                           to use when generating a template
@@ -4239,10 +4204,6 @@ cluster:
                                           description: SkipCrds skips custom resource definition
                                             installation step (Helm's --skip-crds)
                                           type: boolean
-                                        skipTests:
-                                          description: SkipTests skips test manifest installation
-                                            step (Helm's --skip-tests).
-                                          type: boolean
                                         valueFiles:
                                           description: ValuesFiles is a list of Helm value
                                             files to use when generating a template
@@ -4518,8 +4479,6 @@ cluster:
                               type: string
                             namespace:
                               type: string
-                            requiresDeletionConfirmation:
-                              type: boolean
                             requiresPruning:
                               type: boolean
                             status:
@@ -4769,10 +4728,6 @@ cluster:
                                       skipCrds:
                                         description: SkipCrds skips custom resource definition
                                           installation step (Helm's --skip-crds)
-                                        type: boolean
-                                      skipTests:
-                                        description: SkipTests skips test manifest installation
-                                          step (Helm's --skip-tests).
                                         type: boolean
                                       valueFiles:
                                         description: ValuesFiles is a list of Helm value files
@@ -5154,10 +5109,6 @@ cluster:
                                         skipCrds:
                                           description: SkipCrds skips custom resource definition
                                             installation step (Helm's --skip-crds)
-                                          type: boolean
-                                        skipTests:
-                                          description: SkipTests skips test manifest installation
-                                            step (Helm's --skip-tests).
                                           type: boolean
                                         valueFiles:
                                           description: ValuesFiles is a list of Helm value
@@ -5647,8 +5598,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -5878,8 +5827,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -6085,8 +6032,6 @@ cluster:
                               type: object
                             clusters:
                               properties:
-                                flatList:
-                                  type: boolean
                                 selector:
                                   properties:
                                     matchExpressions:
@@ -6274,8 +6219,6 @@ cluster:
                                                 releaseName:
                                                   type: string
                                                 skipCrds:
-                                                  type: boolean
-                                                skipTests:
                                                   type: boolean
                                                 valueFiles:
                                                   items:
@@ -6506,8 +6449,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -6902,8 +6843,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -7133,8 +7072,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -7509,8 +7446,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -7740,8 +7675,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -8141,8 +8074,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -8372,8 +8303,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -8579,8 +8508,6 @@ cluster:
                                         type: object
                                       clusters:
                                         properties:
-                                          flatList:
-                                            type: boolean
                                           selector:
                                             properties:
                                               matchExpressions:
@@ -8768,8 +8695,6 @@ cluster:
                                                           releaseName:
                                                             type: string
                                                           skipCrds:
-                                                            type: boolean
-                                                          skipTests:
                                                             type: boolean
                                                           valueFiles:
                                                             items:
@@ -9000,8 +8925,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -9396,8 +9319,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -9627,8 +9548,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -10003,8 +9922,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -10234,8 +10151,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -10618,8 +10533,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -10849,8 +10762,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -11452,8 +11363,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -11683,8 +11592,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -12281,8 +12188,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -12512,8 +12417,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -12905,8 +12808,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -13136,8 +13037,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -13539,8 +13438,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -13770,8 +13667,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -13977,8 +13872,6 @@ cluster:
                                         type: object
                                       clusters:
                                         properties:
-                                          flatList:
-                                            type: boolean
                                           selector:
                                             properties:
                                               matchExpressions:
@@ -14166,8 +14059,6 @@ cluster:
                                                           releaseName:
                                                             type: string
                                                           skipCrds:
-                                                            type: boolean
-                                                          skipTests:
                                                             type: boolean
                                                           valueFiles:
                                                             items:
@@ -14398,8 +14289,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -14794,8 +14683,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -15025,8 +14912,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -15401,8 +15286,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -15632,8 +15515,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -16016,8 +15897,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -16247,8 +16126,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -16850,8 +16727,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -17081,8 +16956,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -17679,8 +17552,6 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
-                                                          skipTests:
-                                                            type: boolean
                                                           valueFiles:
                                                             items:
                                                               type: string
@@ -17910,8 +17781,6 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
-                                                              type: boolean
-                                                            skipTests:
                                                               type: boolean
                                                             valueFiles:
                                                               items:
@@ -18307,8 +18176,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -18538,8 +18405,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -18921,8 +18786,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -19152,8 +19015,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -19755,8 +19616,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -19986,8 +19845,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -20584,8 +20441,6 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
-                                                skipTests:
-                                                  type: boolean
                                                 valueFiles:
                                                   items:
                                                     type: string
@@ -20815,8 +20670,6 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
-                                                    type: boolean
-                                                  skipTests:
                                                     type: boolean
                                                   valueFiles:
                                                     items:
@@ -21283,8 +21136,6 @@ cluster:
                                         type: string
                                       skipCrds:
                                         type: boolean
-                                      skipTests:
-                                        type: boolean
                                       valueFiles:
                                         items:
                                           type: string
@@ -21514,8 +21365,6 @@ cluster:
                                         releaseName:
                                           type: string
                                         skipCrds:
-                                          type: boolean
-                                        skipTests:
                                           type: boolean
                                         valueFiles:
                                           items:
@@ -21787,8 +21636,6 @@ cluster:
                               type: string
                             namespace:
                               type: string
-                            requiresDeletionConfirmation:
-                              type: boolean
                             requiresPruning:
                               type: boolean
                             status:
@@ -22175,7 +22022,6 @@ cluster:
             app.kubernetes.io/name: argocd-application-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-application-controller
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ServiceAccount
@@ -22185,7 +22031,6 @@ cluster:
             app.kubernetes.io/name: argocd-applicationset-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-applicationset-controller
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ServiceAccount
@@ -22195,7 +22040,6 @@ cluster:
             app.kubernetes.io/name: argocd-dex-server
             app.kubernetes.io/part-of: argocd
           name: argocd-dex-server
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ServiceAccount
@@ -22205,7 +22049,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-controller
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ServiceAccount
@@ -22215,7 +22058,6 @@ cluster:
             app.kubernetes.io/name: argocd-redis
             app.kubernetes.io/part-of: argocd
           name: argocd-redis
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ServiceAccount
@@ -22225,7 +22067,6 @@ cluster:
             app.kubernetes.io/name: argocd-repo-server
             app.kubernetes.io/part-of: argocd
           name: argocd-repo-server
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ServiceAccount
@@ -22235,7 +22076,6 @@ cluster:
             app.kubernetes.io/name: argocd-server
             app.kubernetes.io/part-of: argocd
           name: argocd-server
-          namespace: argocd
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: Role
@@ -22245,7 +22085,6 @@ cluster:
             app.kubernetes.io/name: argocd-application-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-application-controller
-          namespace: argocd
         rules:
         - apiGroups:
           - ""
@@ -22293,7 +22132,6 @@ cluster:
             app.kubernetes.io/name: argocd-applicationset-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-applicationset-controller
-          namespace: argocd
         rules:
         - apiGroups:
           - argoproj.io
@@ -22362,7 +22200,6 @@ cluster:
             app.kubernetes.io/name: argocd-dex-server
             app.kubernetes.io/part-of: argocd
           name: argocd-dex-server
-          namespace: argocd
         rules:
         - apiGroups:
           - ""
@@ -22382,7 +22219,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-controller
-          namespace: argocd
         rules:
         - apiGroups:
           - argoproj.io
@@ -22428,7 +22264,6 @@ cluster:
             app.kubernetes.io/name: argocd-redis
             app.kubernetes.io/part-of: argocd
           name: argocd-redis
-          namespace: argocd
         rules:
         - apiGroups:
           - ""
@@ -22453,7 +22288,6 @@ cluster:
             app.kubernetes.io/name: argocd-server
             app.kubernetes.io/part-of: argocd
           name: argocd-server
-          namespace: argocd
         rules:
         - apiGroups:
           - ""
@@ -22662,7 +22496,6 @@ cluster:
             app.kubernetes.io/name: argocd-application-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-application-controller
-          namespace: argocd
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: Role
@@ -22670,7 +22503,6 @@ cluster:
         subjects:
         - kind: ServiceAccount
           name: argocd-application-controller
-          namespace: argocd
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
@@ -22680,7 +22512,6 @@ cluster:
             app.kubernetes.io/name: argocd-applicationset-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-applicationset-controller
-          namespace: argocd
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: Role
@@ -22688,7 +22519,6 @@ cluster:
         subjects:
         - kind: ServiceAccount
           name: argocd-applicationset-controller
-          namespace: argocd
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
@@ -22698,7 +22528,6 @@ cluster:
             app.kubernetes.io/name: argocd-dex-server
             app.kubernetes.io/part-of: argocd
           name: argocd-dex-server
-          namespace: argocd
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: Role
@@ -22706,7 +22535,6 @@ cluster:
         subjects:
         - kind: ServiceAccount
           name: argocd-dex-server
-          namespace: argocd
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
@@ -22716,7 +22544,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-controller
-          namespace: argocd
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: Role
@@ -22724,7 +22551,6 @@ cluster:
         subjects:
         - kind: ServiceAccount
           name: argocd-notifications-controller
-          namespace: argocd
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
@@ -22734,7 +22560,6 @@ cluster:
             app.kubernetes.io/name: argocd-redis
             app.kubernetes.io/part-of: argocd
           name: argocd-redis
-          namespace: argocd
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: Role
@@ -22742,7 +22567,6 @@ cluster:
         subjects:
         - kind: ServiceAccount
           name: argocd-redis
-          namespace: argocd
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
@@ -22752,7 +22576,6 @@ cluster:
             app.kubernetes.io/name: argocd-server
             app.kubernetes.io/part-of: argocd
           name: argocd-server
-          namespace: argocd
         roleRef:
           apiGroup: rbac.authorization.k8s.io
           kind: Role
@@ -22760,7 +22583,6 @@ cluster:
         subjects:
         - kind: ServiceAccount
           name: argocd-server
-          namespace: argocd
         ---
         apiVersion: rbac.authorization.k8s.io/v1
         kind: ClusterRoleBinding
@@ -22814,28 +22636,20 @@ cluster:
           namespace: argocd
         ---
         apiVersion: v1
-        data:
-          application.resourceTrackingMethod: annotation
         kind: ConfigMap
         metadata:
           labels:
             app.kubernetes.io/name: argocd-cm
             app.kubernetes.io/part-of: argocd
           name: argocd-cm
-          namespace: argocd
         ---
         apiVersion: v1
-        data:
-          server.disable.auth: "true"
-          server.insecure: "true"
-          server.x.frame.options: ""
         kind: ConfigMap
         metadata:
           labels:
             app.kubernetes.io/name: argocd-cmd-params-cm
             app.kubernetes.io/part-of: argocd
           name: argocd-cmd-params-cm
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ConfigMap
@@ -22844,7 +22658,6 @@ cluster:
             app.kubernetes.io/name: argocd-gpg-keys-cm
             app.kubernetes.io/part-of: argocd
           name: argocd-gpg-keys-cm
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ConfigMap
@@ -22854,7 +22667,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-cm
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ConfigMap
@@ -22863,7 +22675,6 @@ cluster:
             app.kubernetes.io/name: argocd-rbac-cm
             app.kubernetes.io/part-of: argocd
           name: argocd-rbac-cm
-          namespace: argocd
         ---
         apiVersion: v1
         data:
@@ -22889,7 +22700,6 @@ cluster:
             app.kubernetes.io/name: argocd-ssh-known-hosts-cm
             app.kubernetes.io/part-of: argocd
           name: argocd-ssh-known-hosts-cm
-          namespace: argocd
         ---
         apiVersion: v1
         kind: ConfigMap
@@ -22898,7 +22708,6 @@ cluster:
             app.kubernetes.io/name: argocd-tls-certs-cm
             app.kubernetes.io/part-of: argocd
           name: argocd-tls-certs-cm
-          namespace: argocd
         ---
         apiVersion: v1
         kind: Secret
@@ -22908,7 +22717,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-secret
-          namespace: argocd
         type: Opaque
         ---
         apiVersion: v1
@@ -22918,7 +22726,6 @@ cluster:
             app.kubernetes.io/name: argocd-secret
             app.kubernetes.io/part-of: argocd
           name: argocd-secret
-          namespace: argocd
         type: Opaque
         ---
         apiVersion: v1
@@ -22929,7 +22736,6 @@ cluster:
             app.kubernetes.io/name: argocd-applicationset-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-applicationset-controller
-          namespace: argocd
         spec:
           ports:
           - name: webhook
@@ -22951,7 +22757,6 @@ cluster:
             app.kubernetes.io/name: argocd-dex-server
             app.kubernetes.io/part-of: argocd
           name: argocd-dex-server
-          namespace: argocd
         spec:
           ports:
           - appProtocol: TCP
@@ -22978,7 +22783,6 @@ cluster:
             app.kubernetes.io/name: argocd-metrics
             app.kubernetes.io/part-of: argocd
           name: argocd-metrics
-          namespace: argocd
         spec:
           ports:
           - name: metrics
@@ -22996,7 +22800,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller-metrics
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-controller-metrics
-          namespace: argocd
         spec:
           ports:
           - name: metrics
@@ -23014,7 +22817,6 @@ cluster:
             app.kubernetes.io/name: argocd-redis
             app.kubernetes.io/part-of: argocd
           name: argocd-redis
-          namespace: argocd
         spec:
           ports:
           - name: tcp-redis
@@ -23031,7 +22833,6 @@ cluster:
             app.kubernetes.io/name: argocd-repo-server
             app.kubernetes.io/part-of: argocd
           name: argocd-repo-server
-          namespace: argocd
         spec:
           ports:
           - name: server
@@ -23053,7 +22854,6 @@ cluster:
             app.kubernetes.io/name: argocd-server
             app.kubernetes.io/part-of: argocd
           name: argocd-server
-          namespace: argocd
         spec:
           ports:
           - name: http
@@ -23075,7 +22875,6 @@ cluster:
             app.kubernetes.io/name: argocd-server-metrics
             app.kubernetes.io/part-of: argocd
           name: argocd-server-metrics
-          namespace: argocd
         spec:
           ports:
           - name: metrics
@@ -23093,7 +22892,6 @@ cluster:
             app.kubernetes.io/name: argocd-applicationset-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-applicationset-controller
-          namespace: argocd
         spec:
           selector:
             matchLabels:
@@ -23183,12 +22981,6 @@ cluster:
                       key: applicationsetcontroller.enable.progressive.syncs
                       name: argocd-cmd-params-cm
                       optional: true
-                - name: ARGOCD_APPLICATIONSET_CONTROLLER_TOKENREF_STRICT_MODE
-                  valueFrom:
-                    configMapKeyRef:
-                      key: applicationsetcontroller.enable.tokenref.strict.mode
-                      name: argocd-cmd-params-cm
-                      optional: true
                 - name: ARGOCD_APPLICATIONSET_CONTROLLER_ENABLE_NEW_GIT_FILE_GLOBBING
                   valueFrom:
                     configMapKeyRef:
@@ -23249,13 +23041,7 @@ cluster:
                       key: applicationsetcontroller.webhook.parallelism.limit
                       name: argocd-cmd-params-cm
                       optional: true
-                - name: ARGOCD_APPLICATIONSET_CONTROLLER_REQUEUE_AFTER
-                  valueFrom:
-                    configMapKeyRef:
-                      key: applicationsetcontroller.requeue.after
-                      name: argocd-cmd-params-cm
-                      optional: true
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 imagePullPolicy: Always
                 name: argocd-applicationset-controller
                 ports:
@@ -23285,8 +23071,6 @@ cluster:
                   name: tmp
                 - mountPath: /app/config/reposerver/tls
                   name: argocd-repo-server-tls
-              nodeSelector:
-                kubernetes.io/os: linux
               serviceAccountName: argocd-applicationset-controller
               volumes:
               - configMap:
@@ -23322,7 +23106,6 @@ cluster:
             app.kubernetes.io/name: argocd-dex-server
             app.kubernetes.io/part-of: argocd
           name: argocd-dex-server
-          namespace: argocd
         spec:
           selector:
             matchLabels:
@@ -23393,7 +23176,7 @@ cluster:
                 - -n
                 - /usr/local/bin/argocd
                 - /shared/argocd-dex
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 imagePullPolicy: Always
                 name: copyutil
                 securityContext:
@@ -23410,8 +23193,6 @@ cluster:
                   name: static-files
                 - mountPath: /tmp
                   name: dexconfig
-              nodeSelector:
-                kubernetes.io/os: linux
               serviceAccountName: argocd-dex-server
               volumes:
               - emptyDir: {}
@@ -23438,7 +23219,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-controller
-          namespace: argocd
         spec:
           selector:
             matchLabels:
@@ -23484,7 +23264,7 @@ cluster:
                       key: notificationscontroller.repo.server.plaintext
                       name: argocd-cmd-params-cm
                       optional: true
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 imagePullPolicy: Always
                 livenessProbe:
                   tcpSocket:
@@ -23502,8 +23282,6 @@ cluster:
                 - mountPath: /app/config/reposerver/tls
                   name: argocd-repo-server-tls
                 workingDir: /app
-              nodeSelector:
-                kubernetes.io/os: linux
               securityContext:
                 runAsNonRoot: true
                 seccompProfile:
@@ -23533,7 +23311,6 @@ cluster:
             app.kubernetes.io/name: argocd-redis
             app.kubernetes.io/part-of: argocd
           name: argocd-redis
-          namespace: argocd
         spec:
           selector:
             matchLabels:
@@ -23587,7 +23364,7 @@ cluster:
                 - argocd
                 - admin
                 - redis-initial-password
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 imagePullPolicy: IfNotPresent
                 name: secret-init
                 securityContext:
@@ -23599,8 +23376,6 @@ cluster:
                   runAsNonRoot: true
                   seccompProfile:
                     type: RuntimeDefault
-              nodeSelector:
-                kubernetes.io/os: linux
               securityContext:
                 runAsNonRoot: true
                 runAsUser: 999
@@ -23616,7 +23391,6 @@ cluster:
             app.kubernetes.io/name: argocd-repo-server
             app.kubernetes.io/part-of: argocd
           name: argocd-repo-server
-          namespace: argocd
         spec:
           selector:
             matchLabels:
@@ -23771,12 +23545,6 @@ cluster:
                       key: reposerver.plugin.tar.exclusions
                       name: argocd-cmd-params-cm
                       optional: true
-                - name: ARGOCD_REPO_SERVER_PLUGIN_USE_MANIFEST_GENERATE_PATHS
-                  valueFrom:
-                    configMapKeyRef:
-                      key: reposerver.plugin.use.manifest.generate.paths
-                      name: argocd-cmd-params-cm
-                      optional: true
                 - name: ARGOCD_REPO_SERVER_ALLOW_OUT_OF_BOUNDS_SYMLINKS
                   valueFrom:
                     configMapKeyRef:
@@ -23849,7 +23617,7 @@ cluster:
                   value: /helm-working-dir
                 - name: HELM_DATA_HOME
                   value: /helm-working-dir
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 imagePullPolicy: Always
                 livenessProbe:
                   failureThreshold: 3
@@ -23901,7 +23669,7 @@ cluster:
                 - -n
                 - /usr/local/bin/argocd
                 - /var/run/argocd/argocd-cmp-server
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 name: copyutil
                 securityContext:
                   allowPrivilegeEscalation: false
@@ -23915,8 +23683,6 @@ cluster:
                 volumeMounts:
                 - mountPath: /var/run/argocd
                   name: var-files
-              nodeSelector:
-                kubernetes.io/os: linux
               serviceAccountName: argocd-repo-server
               volumes:
               - configMap:
@@ -23958,7 +23724,6 @@ cluster:
             app.kubernetes.io/name: argocd-server
             app.kubernetes.io/part-of: argocd
           name: argocd-server
-          namespace: argocd
         spec:
           selector:
             matchLabels:
@@ -24256,7 +24021,7 @@ cluster:
                       key: applicationsetcontroller.enable.scm.providers
                       name: argocd-cmd-params-cm
                       optional: true
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -24299,8 +24064,6 @@ cluster:
                   name: tmp
                 - mountPath: /home/argocd/params
                   name: argocd-cmd-params-cm
-              nodeSelector:
-                kubernetes.io/os: linux
               serviceAccountName: argocd-server
               volumes:
               - emptyDir: {}
@@ -24349,7 +24112,6 @@ cluster:
             app.kubernetes.io/name: argocd-application-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-application-controller
-          namespace: argocd
         spec:
           replicas: 1
           selector:
@@ -24585,9 +24347,7 @@ cluster:
                       key: controller.ignore.normalizer.jq.timeout
                       name: argocd-cmd-params-cm
                       optional: true
-                - name: KUBECACHEDIR
-                  value: /tmp/kubecache
-                image: quay.io/argoproj/argocd:latest
+                image: quay.io/argoproj/argocd:v2.13.0
                 imagePullPolicy: Always
                 name: argocd-application-controller
                 ports:
@@ -24614,17 +24374,11 @@ cluster:
                   name: argocd-home
                 - mountPath: /home/argocd/params
                   name: argocd-cmd-params-cm
-                - mountPath: /tmp
-                  name: argocd-application-controller-tmp
                 workingDir: /home/argocd
-              nodeSelector:
-                kubernetes.io/os: linux
               serviceAccountName: argocd-application-controller
               volumes:
               - emptyDir: {}
                 name: argocd-home
-              - emptyDir: {}
-                name: argocd-application-controller-tmp
               - name: argocd-repo-server-tls
                 secret:
                   items:
@@ -24644,82 +24398,10 @@ cluster:
                   optional: true
                 name: argocd-cmd-params-cm
         ---
-        apiVersion: argoproj.io/v1alpha1
-        kind: ApplicationSet
-        metadata:
-          name: bootstrap
-          namespace: argocd
-        spec:
-          generators:
-          - matrix:
-              generators:
-              - list:
-                  elements:
-                  - repoPath: apps/*/*
-                    repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
-                    revision: HEAD
-              - git:
-                  directories:
-                  - path: '{{ repoPath }}'
-                  repoURL: '{{ repoURL }}'
-                  revision: '{{ revision }}'
-          syncPolicy:
-            preserveResourcesOnDeletion: true
-          template:
-            metadata:
-              name: '{{ path[3] }}-{{ path.basenameNormalized }}'
-              namespace: argocd
-            spec:
-              destination:
-                namespace: '{{ path[3] }}'
-                server: https://kubernetes.default.svc
-              ignoreDifferences:
-              - jsonPointers:
-                - /data/ca.crt
-                - /data/ca.key
-                kind: Secret
-                name: cilium-ca
-                namespace: kube-system
-              - jsonPointers:
-                - /data/ca.crt
-                - /data/tls.crt
-                - /data/tls.key
-                kind: Secret
-                name: hubble-server-certs
-                namespace: kube-system
-              - jsonPointers:
-                - /data/ca.crt
-                - /data/tls.crt
-                - /data/tls.key
-                kind: Secret
-                name: hubble-relay-client-certs
-                namespace: kube-system
-              project: default
-              source:
-                path: '{{ path }}'
-                repoURL: '{{ repoURL }}'
-                targetRevision: '{{ revision }}'
-              syncPolicy:
-                automated:
-                  prune: false
-                retry:
-                  backoff:
-                    duration: 30s
-                    factor: 2
-                    maxDuration: 5m
-                  limit: -1
-                syncOptions:
-                - CreateNamespace=true
-                - ServerSideApply=true
-                - ApplyOutOfSyncOnly=true
-                - RespectIgnoreDifferences=true
-                - SkipDryRunOnMissingResource=true
-        ---
         apiVersion: networking.k8s.io/v1
         kind: NetworkPolicy
         metadata:
           name: argocd-application-controller-network-policy
-          namespace: argocd
         spec:
           ingress:
           - from:
@@ -24736,7 +24418,6 @@ cluster:
         kind: NetworkPolicy
         metadata:
           name: argocd-applicationset-controller-network-policy
-          namespace: argocd
         spec:
           ingress:
           - from:
@@ -24756,7 +24437,6 @@ cluster:
         kind: NetworkPolicy
         metadata:
           name: argocd-dex-server-network-policy
-          namespace: argocd
         spec:
           ingress:
           - from:
@@ -24787,7 +24467,6 @@ cluster:
             app.kubernetes.io/name: argocd-notifications-controller
             app.kubernetes.io/part-of: argocd
           name: argocd-notifications-controller-network-policy
-          namespace: argocd
         spec:
           ingress:
           - from:
@@ -24805,7 +24484,6 @@ cluster:
         kind: NetworkPolicy
         metadata:
           name: argocd-redis-network-policy
-          namespace: argocd
         spec:
           ingress:
           - from:
@@ -24831,7 +24509,6 @@ cluster:
         kind: NetworkPolicy
         metadata:
           name: argocd-repo-server-network-policy
-          namespace: argocd
         spec:
           ingress:
           - from:
@@ -24864,7 +24541,6 @@ cluster:
         kind: NetworkPolicy
         metadata:
           name: argocd-server-network-policy
-          namespace: argocd
         spec:
           ingress:
           - {}
@@ -24873,3 +24549,34 @@ cluster:
               app.kubernetes.io/name: argocd-server
           policyTypes:
           - Ingress
+        ---
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: argocd-cmd-params-cm
+          labels:
+            app.kubernetes.io/name: argocd-cmd-params-cm
+            app.kubernetes.io/part-of: argocd
+        data:
+          # Run ArgoCD Server without TLS
+          server.insecure: "true"
+        ---
+        apiVersion: gateway.networking.k8s.io/v1
+        kind: HTTPRoute
+        metadata:
+          name: argocd-http-app
+          namespace: argocd
+        spec:
+          parentRefs:
+          - kind: Gateway
+            name: my-gateway
+            namespace: default
+            sectionName: shared-https
+          hostnames:
+          - argocd.apps.timgiertz.com
+          rules:
+          - matches:
+            backendRefs:
+            - name: argocd-server
+              port: 80
+        ---

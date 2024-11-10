@@ -23,6 +23,8 @@ patches:
     file: patches/extraManifests.yml
   - name: metric-server
     file: patches/metrics-server.yml
+  - name: metric-server
+    file: patches/argocd.yml
 #systemExtensions:
   #- siderolabs/qemu-guest-agent
   #- siderolabs/iscsi-tools

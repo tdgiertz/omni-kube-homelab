@@ -35,12 +35,9 @@ spec:
       protocol: HTTPS
       port: 443
       allowedRoutes:
-        kinds:
-        - kind: HTTPRoute
         namespaces:
           from: All
       tls:
-        mode: Terminate
         certificateRefs:
         - kind: Secret
           name: apps-timgiertz-com-tls
