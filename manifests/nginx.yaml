@@ -59,8 +59,8 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: http
-      hostname: apps.timgiertz.com
+    - name: https
+      hostname: test.apps.timgiertz.com
       port: 443
       protocol: HTTPS
       allowedRoutes:
