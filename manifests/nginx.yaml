@@ -40,7 +40,10 @@ metadata:
   name: http-app-1
 spec:
   parentRefs:
-  - name: my-gateway
+  - kind: Gateway
+    name: my-gateway
+    namespace: default
+    sectionName: shared-https
   hostnames:
   - test.apps.timgiertz.com
   rules:
