@@ -39,7 +39,6 @@ kind: Certificate
 metadata:
   name: apps-timgiertz-com-tls
 spec:
-  secretName: wildcard-apps-timgiertz-com-tls
   duration: 2160h0m0s # 90d
   renewBefore: 360h0m0s # 15d
   issuerRef:
@@ -59,8 +58,14 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
+    - name: web-gw
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: Same
     - name: https
-      hostname: test.apps.timgiertz.com
+      hostname: "*.apps.timgiertz.com"
       port: 443
       protocol: HTTPS
       allowedRoutes:
@@ -70,7 +75,7 @@ spec:
         mode: Terminate
         certificateRefs:
         - kind: Secret
-          name: wildcard-apps-timgiertz-com-tls
+          name: apps-timgiertz-com-tls
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
