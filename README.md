@@ -1,9 +1,3 @@
-
-<p align="center">
-    <img src="https://avatars.githubusercontent.com/u/82603435?v=4" width="140px" alt="QJOLY LOGO"/>
-    <br>
-</p>
-
 # Talos Omni template
 
 This is a template for Omni (software that manages multiples Talos clusters) that can be used to create a cluster with predefined configurations.

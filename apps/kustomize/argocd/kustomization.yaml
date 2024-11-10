@@ -6,7 +6,4 @@ resources:
   - bootstrap-app-set.yaml
 
 patches:
-  - path: config.yaml
-  - path: params.yaml
-  #- path: deployment.yaml
-  #- path: service.yaml
+  - path: argocd-cmd-params-cm.yaml
