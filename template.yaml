@@ -16,15 +16,15 @@ patches:
   #- name: kubespan-enabled
   #  file: patches/kubespan.yml
   - name: no-cni
-    file: patches/cni.yml
+    file: patches/cni.yaml
   - name: disable-kubeproxy
-    file: patches/disable-kubeproxy.yml
+    file: patches/disable-kubeproxy.yaml
   - name: install-cilium
-    file: patches/extraManifests.yml
+    file: patches/extraManifests.yaml
   - name: metric-server
-    file: patches/metrics-server.yml
+    file: patches/metrics-server.yaml
   - name: metric-server
-    file: patches/argocd.yml
+    file: patches/argocd.yaml
 #systemExtensions:
   #- siderolabs/qemu-guest-agent
   #- siderolabs/iscsi-tools
