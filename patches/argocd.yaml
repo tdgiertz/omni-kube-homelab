@@ -24643,22 +24643,18 @@ cluster:
         apiVersion: argoproj.io/v1alpha1
         kind: ApplicationSet
         metadata:
-          name: bootstrap
+          name: argocd-bootstrap
           namespace: argocd
         spec:
           generators:
-          - matrix:
-              generators:
-              - list:
-                  elements:
-                  - repoPath: apps/*/*
-                    repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
-                    revision: HEAD
-              - git:
-                  directories:
-                  - path: '{{ repoPath }}'
-                  repoURL: '{{ repoURL }}'
-                  revision: '{{ revision }}'
+          - git:
+            - directories:
+              - path: apps/argocd/*
+              repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
+              revision: HEAD
+          goTemplate: true
+          goTemplateOptions:
+          - missingkey=error
           syncPolicy:
             preserveResourcesOnDeletion: true
           template:
