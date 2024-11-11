@@ -10,7 +10,7 @@ spec:
     - repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
       revision: HEAD
       directories:
-      - path: apps/argocd/*
+      - path: "apps/argocd/*"
   syncPolicy:
     preserveResourcesOnDeletion: true
   template:
