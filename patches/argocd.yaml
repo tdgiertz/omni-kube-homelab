@@ -24647,11 +24647,19 @@ cluster:
           namespace: argocd
         spec:
           generators:
-          - git:
-            - directories:
-              - path: apps/argocd/*
-              repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
-              revision: HEAD
+          - generators:
+            - elements:
+              - directories:
+                - path: apps/argocd/*/*
+                repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
+                revision: HEAD
+              list: null
+            - git:
+                directories:
+                - path: '{{ repoPath }}'
+                repoURL: '{{ repoURL }}'
+                revision: '{{ revision }}'
+            matrix: null
           goTemplate: true
           goTemplateOptions:
           - missingkey=error

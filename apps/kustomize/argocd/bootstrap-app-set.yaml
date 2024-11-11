@@ -2,15 +2,24 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: argocd-bootstrap
+  namespace: argocd
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - git:
-    - repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
-      revision: HEAD
-      directories:
-      - path: "apps/argocd/*"
+  - matrix:
+    generators:
+    - list:
+      elements:
+        - repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
+          revision: HEAD
+          directories:
+          - path: apps/argocd/*/*
+    - git:
+        repoURL: '{{ repoURL }}'
+        revision: '{{ revision }}'
+        directories:
+          - path: '{{ repoPath }}'
   syncPolicy:
     preserveResourcesOnDeletion: true
   template:
