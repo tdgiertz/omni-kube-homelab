@@ -41,6 +41,15 @@ spec:
         certificateRefs:
         - kind: Secret
           name: apps-timgiertz-com-tls
+    - name: shared-tls
+      hostname: "*.apps.timgiertz.com"
+      protocol: TLS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Passthrough
 ---
 # apiVersion: v1
 # kind: Namespace
@@ -57,7 +66,7 @@ metadata:
     https-upgrade: "true"
 spec:
   parentRefs:
-  - namespace: kube-system
+  - namespace: default
     name: my-gateway
     kind: Gateway
     sectionName: shared-http

@@ -1,13 +1,4 @@
-# All values below are taken from the CephCluster CRD
-# -- Cluster configuration.
-# @default -- See [below](#ceph-cluster-spec)
-cephClusterSpec:
-  # This cluster spec example is for a converged cluster where all the Ceph daemons are running locally,
-  # as in the host-based example (cluster.yaml). For a different configuration such as a
-  # PVC-based cluster (cluster-on-pvc.yaml), external cluster (cluster-external.yaml),
-  # or stretch cluster (cluster-stretched.yaml), replace this entire `cephClusterSpec`
-  # with the specs from those examples.
-
+spec:
   # enable the ceph dashboard for viewing cluster status
   dashboard:
     enabled: true
