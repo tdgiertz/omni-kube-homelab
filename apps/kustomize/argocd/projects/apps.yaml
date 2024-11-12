@@ -5,7 +5,7 @@ metadata:
   name: apps
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    - apps.argocd.argoproj.io/finalizer
 spec:
   description: General apps project
   clusterResourceWhitelist:
