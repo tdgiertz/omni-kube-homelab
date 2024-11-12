@@ -24641,6 +24641,27 @@ cluster:
                 name: argocd-cmd-params-cm
         ---
         apiVersion: argoproj.io/v1alpha1
+        kind: AppProject
+        metadata:
+          finalizers:
+          - resources-finalizer.argocd.argoproj.io
+          name: apps
+          namespace: argocd
+        spec:
+          clusterResourceWhitelist:
+          - group: '*'
+            kind: '*'
+          description: General apps project
+          destinations:
+          - namespace: '*'
+            server: '*'
+          namespaceResourceWhitelist:
+          - group: '*'
+            kind: '*'
+          sourceRepos:
+          - '*'
+        ---
+        apiVersion: argoproj.io/v1alpha1
         kind: ApplicationSet
         metadata:
           name: argocd-bootstrap
