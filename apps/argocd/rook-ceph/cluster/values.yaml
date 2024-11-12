@@ -1,5 +1,5 @@
 rook-ceph-cluster:
-  spec:
+  cephClusterSpec:
     # enable the ceph dashboard for viewing cluster status
     dashboard:
       enabled: true
