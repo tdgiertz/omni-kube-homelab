@@ -24651,7 +24651,7 @@ cluster:
               generators:
               - list:
                   elements:
-                  - repoPath: apps/argocd/*
+                  - repoPath: apps/argocd/*/*
                     repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
                     revision: HEAD
               - git:
@@ -24661,7 +24661,7 @@ cluster:
                   revision: '{{revision}}'
           template:
             metadata:
-              name: '{{path[0]}}-{{path[2]}}'
+              name: '{{path[2]}}-{{path[3]}}'
               namespace: argocd
             spec:
               destination:
@@ -24688,7 +24688,7 @@ cluster:
                 kind: Secret
                 name: hubble-relay-client-certs
                 namespace: kube-system
-              project: default
+              project: '{{path[0]}}'
               source:
                 path: '{{path}}'
                 repoURL: '{{repoURL}}'
