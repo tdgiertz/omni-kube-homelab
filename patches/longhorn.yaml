@@ -1,0 +1,18 @@
+machine:
+  disks:
+    - device: /dev/sdb
+      partitions:
+        - mountpoint: /var/mnt/longhorn
+    - device: /dev/nvme0n1
+      partitions:
+        - mountpoint: /var/mnt/longhorn
+
+  kubelet:
+    extraMounts:
+      - destination: /var/lib/longhorn
+        type: bind
+        source: /var/mnt/longhorn
+        options:
+          - bind
+          - rshared
+          - rw

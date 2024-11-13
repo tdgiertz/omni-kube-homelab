@@ -25,10 +25,11 @@ patches:
     file: patches/metrics-server.yaml
   - name: argocd
     file: patches/argocd.yaml
-#systemExtensions:
-  #- siderolabs/qemu-guest-agent
-  #- siderolabs/iscsi-tools
-  #- siderolabs/util-linux-tools
+  - name: longhorn
+    file: patches/longhorn.yaml
+systemExtensions:
+  - siderolabs/iscsi-tools
+  - siderolabs/util-linux-tools
 ---
 kind: ControlPlane
 machineClass:
