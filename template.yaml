@@ -25,8 +25,6 @@ patches:
     file: patches/metrics-server.yaml
   - name: argocd
     file: patches/argocd.yaml
-  - name: longhorn
-    file: patches/longhorn.yaml
 systemExtensions:
   - siderolabs/iscsi-tools
   - siderolabs/util-linux-tools
