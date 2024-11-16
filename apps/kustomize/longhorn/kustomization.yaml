@@ -1,0 +1,13 @@
+namespace: longhorn-system
+
+resources:
+  - https://raw.githubusercontent.com/longhorn/longhorn/v1.7.2/deploy/longhorn.yaml
+  - service.yaml
+
+patches:
+  - path: namespace.yaml
+    target:
+      kind: Namespace
+  # - path: delete-namespace.yaml
+  # - path: namespace.yaml
+  - path: longhorn-default-setting.yaml
