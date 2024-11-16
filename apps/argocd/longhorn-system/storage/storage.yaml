@@ -68,6 +68,7 @@ data:
   default-setting.yaml: |-
     priority-class: longhorn-critical
     disable-revision-counter: true
+    default-data-path: /var/mnt/longhorn/
 ---
 # Source: longhorn/templates/storageclass.yaml
 apiVersion: v1
@@ -4863,7 +4864,7 @@ spec:
         - name: proc
           mountPath: /host/proc/
         - name: longhorn
-          mountPath: /var/mnt/longhorn/
+          mountPath: /var/lib/longhorn/
           mountPropagation: Bidirectional
         - name: longhorn-grpc-tls
           mountPath: /tls-files/
@@ -4900,7 +4901,7 @@ spec:
           path: /proc/
       - name: longhorn
         hostPath:
-          path: /var/mnt/longhorn/
+          path: /var/lib/longhorn/
       - name: longhorn-grpc-tls
         secret:
           secretName: longhorn-grpc-tls
