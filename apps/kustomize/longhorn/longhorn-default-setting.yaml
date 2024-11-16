@@ -10,6 +10,8 @@ metadata:
     app.kubernetes.io/version: v1.7.2
 data:
   default-setting.yaml: |-
+    backup-target: s3://longhorn@us-central
+    backup-target-credential-secret: minio-secret
     priority-class: longhorn-critical
     disable-revision-counter: true
     default-data-path: /var/mnt/longhorn/

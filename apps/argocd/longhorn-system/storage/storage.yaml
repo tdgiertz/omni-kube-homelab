@@ -4723,6 +4723,8 @@ subjects:
 apiVersion: v1
 data:
   default-setting.yaml: |-
+    backup-target: s3://longhorn@us-central
+    backup-target-credential-secret: minio-secret
     priority-class: longhorn-critical
     disable-revision-counter: true
     default-data-path: /var/mnt/longhorn/
@@ -4767,6 +4769,17 @@ metadata:
     app.kubernetes.io/version: v1.7.2
   name: longhorn-storageclass
   namespace: longhorn-system
+---
+apiVersion: v1
+data:
+  AWS_ACCESS_KEY_ID: QVp1a3pKSGZWSFgwaG1uRFZ6R0s=
+  AWS_ENDPOINTS: aHR0cHM6Ly9zMy50aW1naWVydHouY29tOjQ0Mw==
+  AWS_SECRET_ACCESS_KEY: bU1GOU1BTjJuNFlZRUFtOURjeFhscnZoOEZwYlRvb2F2S25KcnQ3MA==
+kind: Secret
+metadata:
+  name: minio-secret
+  namespace: longhorn-system
+type: Opaque
 ---
 apiVersion: v1
 kind: Service
