@@ -16,7 +16,7 @@ spec:
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: my-gateway
+  name: shared-default-gateway
   namespace: default
   annotations:
     cert-manager.io/cluster-issuer: timgiertz-prod-issuer
@@ -67,7 +67,7 @@ metadata:
 spec:
   parentRefs:
   - namespace: default
-    name: my-gateway
+    name: shared-default-gateway
     kind: Gateway
     sectionName: shared-http
   hostnames:

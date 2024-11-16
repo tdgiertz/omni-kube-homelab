@@ -4723,7 +4723,7 @@ subjects:
 apiVersion: v1
 data:
   default-setting.yaml: |-
-    backup-target: s3://longhorn@us-central
+    backup-target: s3://longhorn@us-central/
     backup-target-credential-secret: minio-secret
     priority-class: longhorn-critical
     disable-revision-counter: true
@@ -5170,7 +5170,7 @@ spec:
   - longhorn.apps.timgiertz.com
   parentRefs:
   - kind: Gateway
-    name: my-gateway
+    name: shared-default-gateway
     namespace: default
     sectionName: shared-https
   rules:

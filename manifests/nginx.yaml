@@ -41,7 +41,7 @@ metadata:
 spec:
   parentRefs:
   - kind: Gateway
-    name: my-gateway
+    name: shared-default-gateway
     namespace: default
     sectionName: shared-https
   hostnames:
