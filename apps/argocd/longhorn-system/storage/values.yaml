@@ -1,0 +1,6 @@
+longhorn:
+  defaultSettings:
+    createDefaultDiskLabeledNodes: true
+    defaultDataPath: /var/mnt/longhorn
+    defaultReplicaCount: 2
+    defaultDataLocality: best-effort

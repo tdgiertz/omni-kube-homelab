@@ -69,6 +69,8 @@ data:
     priority-class: longhorn-critical
     disable-revision-counter: true
     default-data-path: /var/mnt/longhorn/
+    default-replica-count: 2
+    default-data-locality: best-effort
 ---
 # Source: longhorn/templates/storageclass.yaml
 apiVersion: v1
