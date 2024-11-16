@@ -30,6 +30,12 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: shared-postgres
+      protocol: TCP
+      port: 5432
+      allowedRoutes:
+        namespaces:
+          from: All
     - name: shared-https
       hostname: "*.apps.timgiertz.com"
       protocol: HTTPS

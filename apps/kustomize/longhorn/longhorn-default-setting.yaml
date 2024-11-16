@@ -17,3 +17,7 @@ data:
     default-data-path: /var/mnt/longhorn/
     default-replica-count: 2
     default-data-locality: best-effort
+    orphan-auto-deletion: false
+    auto-delete-pod-when-volume-detached-unexpectedly: true
+    node-down-pod-deletion-policy: delete-both-statefulset-and-deployment-pod
+    node-drain-policy: always-allow
