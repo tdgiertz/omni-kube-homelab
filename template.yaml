@@ -35,6 +35,19 @@ machineClass:
   size: 3
 ---
 kind: Workers
+name: worker-node-sdb
 machineClass:
-  name: worker-node
-  size: Unlimited
+  name: worker-node-sdb
+  size: unlimited
+patches:
+  - name: longhorn-mount
+    file: patches/longhorn-sdb.yaml
+---
+kind: Workers
+name: worker-node-nvme
+machineClass:
+  name: worker-node-nvme
+  size: unlimited
+patches:
+  - name: longhorn-mount
+    file: patches/longhorn-nvme.yaml
