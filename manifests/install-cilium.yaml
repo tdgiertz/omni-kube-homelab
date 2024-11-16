@@ -2339,20 +2339,6 @@ spec:
   controllerName: io.cilium/gateway-controller
   description: The default Cilium GatewayClass
 ---
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hubble-ui-service
-  namespace: kube-system
-spec:
-  ports:
-  - protocol: TCP
-    port: 8090
-    targetPort: 8090
-  selector:
-    app: hubble-ui
----
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
@@ -2369,6 +2355,6 @@ spec:
   rules:
   - matches:
     backendRefs:
-    - name: hubble-ui-service
-      port: 8090
+    - name: hubble-ui
+      port: 80
 ---
