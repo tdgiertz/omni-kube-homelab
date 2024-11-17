@@ -24,11 +24,14 @@ helm template \
     --set=k8sServiceHost=localhost \
     --set=k8sServicePort=7445 \
     --set=nodeIPAM.enabled=true \
-    --set=gatewayAPI.enabled=true \
+    --set=gatewayAPI.enabled=false \
     --set=envoy.securityContext.capabilities.keepCapNetBindService=true \
-    --api-versions='gateway.networking.k8s.io/v1/GatewayClass' \
     --set=bgpControlPlane.enabled=true \
     --set hubble.relay.enabled=true \
     --set hubble.ui.enabled=true > cilium/install-cilium.yaml
 
 kustomize build ./cilium > ../../manifests/install-cilium.yaml
+
+## CloudNativePG
+
+kustomize build ./CloudNativePG > ../argocd/cnpg-system/cnpg/manager.yaml

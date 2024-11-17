@@ -21,10 +21,10 @@ patches:
     file: patches/disable-kubeproxy.yaml
   - name: install-cilium
     file: patches/extraManifests.yaml
-  - name: metric-server
-    file: patches/metrics-server.yaml
-  - name: argocd
-    file: patches/argocd.yaml
+  # - name: metric-server
+  #   file: patches/metrics-server.yaml
+  # - name: argocd
+  #   file: patches/argocd.yaml
 systemExtensions:
   - siderolabs/iscsi-tools
   - siderolabs/util-linux-tools
