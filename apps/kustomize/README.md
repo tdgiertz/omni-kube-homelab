@@ -51,3 +51,7 @@ kustomize build ./istio > ../argocd/istio-system/istio/istio.yaml
 ## nginx
 
 kustomize build ./nginx > ../argocd/default/nginx/nginx.yaml
+
+## Istio Gateway
+
+kustomize build ./istio-gateway > ../argocd/default/gateway/gateway.yaml

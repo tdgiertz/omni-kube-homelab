@@ -7,7 +7,6 @@ spec:
   renewBefore: 360h0m0s # 15d
   issuerRef:
     name: timgiertz-prod-issuer
-    # namespace: cert-manager
     kind: ClusterIssuer
   commonName: "*.apps.timgiertz.com"
   dnsNames:
