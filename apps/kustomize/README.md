@@ -4,6 +4,10 @@ Assumes working directory oof kustomize
 
 kustomize build ./argocd | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="argocd"); .contents=load_str("/dev/stdin"))' ../../patches/argocd.yaml
 
+## ArgoCD HTTP Route
+
+kustomize build ./argocd-http-route > ../argocd/argocd/http-route/http-route.yaml
+
 ## Longhorn
 
 kustomize build ./longhorn > ../argocd/longhorn-system/storage/storage.yaml
