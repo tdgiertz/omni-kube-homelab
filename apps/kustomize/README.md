@@ -34,7 +34,7 @@ helm template \
     --set hubble.relay.enabled=true \
     --set hubble.ui.enabled=true > cilium/install-cilium.yaml
 
-kustomize build ./cilium > ../argocd/kube-system/cilium/cilium.yaml
+kustomize build ./cilium | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="kube-system"); .contents=load_str("/dev/stdin"))' ../../patches/cilium.yaml
 
 ## CloudNativePG
 

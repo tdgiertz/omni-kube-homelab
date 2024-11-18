@@ -21,6 +21,8 @@ patches:
     file: patches/disable-kubeproxy.yaml
   - name: extra-manifests
     file: patches/extraManifests.yaml
+  - name: cilium
+    file: patches/cilium.yaml
   - name: metric-server
     file: patches/metrics-server.yaml
   - name: argocd
