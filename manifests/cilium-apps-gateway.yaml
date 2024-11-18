@@ -21,32 +21,32 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: timgiertz-prod-issuer
 spec:
-  gatewayClassName: cilium
+  gatewayClassName: istio
   listeners:
-    # - name: shared-http
-    #   hostname: "*.apps.timgiertz.com"
-    #   protocol: HTTP
-    #   port: 80
-    #   allowedRoutes:
-    #     namespaces:
-    #       from: All
-    - name: shared-tcp
-      protocol: TCP
-      port: 5432
+    - name: shared-http
+      hostname: "*.apps.timgiertz.com"
+      protocol: HTTP
+      port: 80
       allowedRoutes:
-        kinds:
-        - kind: TCPRoute
-    # - name: shared-https
-    #   hostname: "*.apps.timgiertz.com"
-    #   protocol: HTTPS
-    #   port: 443
+        namespaces:
+          from: All
+    # - name: shared-tcp
+    #   protocol: TCP
+    #   port: 5432
     #   allowedRoutes:
-    #     namespaces:
-    #       from: All
-    #   tls:
-    #     certificateRefs:
-    #     - kind: Secret
-    #       name: apps-timgiertz-com-tls
+    #     kinds:
+    #     - kind: TCPRoute
+    - name: shared-https
+      hostname: "*.apps.timgiertz.com"
+      protocol: HTTPS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        certificateRefs:
+        - kind: Secret
+          name: apps-timgiertz-com-tls
     # - name: shared-tls
     #   hostname: "*.apps.timgiertz.com"
     #   protocol: TLS
@@ -56,32 +56,32 @@ spec:
     #       from: All
     #   tls:
     #     mode: Passthrough
----
+# ---
 # apiVersion: v1
 # kind: Namespace
 # metadata:
 #   name: https-upgrade
-# ---
-# kind: HTTPRoute
-# apiVersion: gateway.networking.k8s.io/v1beta1
-# metadata:
-#   name: https-upgrade
-#   #namespace: https-upgrade
-#   namespace: default
-#   labels:
-#     https-upgrade: "true"
-# spec:
-#   parentRefs:
-#   - namespace: default
-#     name: shared-default-gateway
-#     kind: Gateway
-#     sectionName: shared-http
-#   hostnames:
-#     - "*.apps.timgiertz.com"
-#   rules:
-#   - filters:
-#     - type: RequestRedirect
-#       requestRedirect:
-#         scheme: https
-#         statusCode: 301
+---
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: https-upgrade
+  #namespace: https-upgrade
+  namespace: default
+  labels:
+    https-upgrade: "true"
+spec:
+  parentRefs:
+  - namespace: default
+    name: shared-default-gateway
+    kind: Gateway
+    sectionName: shared-http
+  hostnames:
+    - "*.apps.timgiertz.com"
+  rules:
+  - filters:
+    - type: RequestRedirect
+      requestRedirect:
+        scheme: https
+        statusCode: 301
 ---

@@ -30,8 +30,20 @@ helm template \
     --set hubble.relay.enabled=true \
     --set hubble.ui.enabled=true > cilium/install-cilium.yaml
 
-kustomize build ./cilium > ../../manifests/install-cilium.yaml
+kustomize build ./cilium > ../argocd/kube-system/cilium/cilium.yaml
 
 ## CloudNativePG
 
 kustomize build ./CloudNativePG > ../argocd/cnpg-system/cnpg/manager.yaml
+
+## Cert-Manager
+
+kustomize build ./cert-manager > ../argocd/cert-manager/cert-manager/cert-manager.yaml
+
+## Istio
+
+kustomize build ./istio > ../argocd/istio-system/istio/istio.yaml
+
+## nginx
+
+kustomize build ./nginx > ../argocd/default/nginx/nginx.yaml
