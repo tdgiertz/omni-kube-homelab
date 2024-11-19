@@ -3,6 +3,6 @@ resources:
   - namespace.yaml
   - istio-base.yaml
   - istio-control-plane.yaml
-  # - istio-cni.yaml
+  - istio-cni.yaml
   - istio-ztunnel.yaml
   - istio-gateway.yaml
