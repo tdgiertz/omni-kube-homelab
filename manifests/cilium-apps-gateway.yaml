@@ -33,7 +33,7 @@ spec:
           from: All
     - name: shared-tcp
       protocol: TCP
-      port: 5430
+      port: 5432
       allowedRoutes:
         kinds:
         - kind: TCPRoute

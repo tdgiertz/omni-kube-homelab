@@ -30,12 +30,12 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    # - name: shared-tcp
-    #   protocol: TCP
-    #   port: 5432
-    #   allowedRoutes:
-    #     kinds:
-    #     - kind: TCPRoute
+    - name: shared-tcp
+      protocol: TCP
+      port: 5432
+      allowedRoutes:
+        kinds:
+        - kind: TCPRoute
     - name: shared-https
       hostname: "*.apps.timgiertz.com"
       protocol: HTTPS
@@ -47,15 +47,15 @@ spec:
         certificateRefs:
         - kind: Secret
           name: apps-timgiertz-com-tls
-    # - name: shared-tls
-    #   hostname: "*.apps.timgiertz.com"
-    #   protocol: TLS
-    #   port: 443
-    #   allowedRoutes:
-    #     namespaces:
-    #       from: All
-    #   tls:
-    #     mode: Passthrough
+    - name: shared-tls
+      hostname: "*.apps.timgiertz.com"
+      protocol: TLS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Passthrough
 # ---
 # apiVersion: v1
 # kind: Namespace
