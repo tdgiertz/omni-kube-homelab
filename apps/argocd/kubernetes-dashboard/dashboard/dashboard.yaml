@@ -931,3 +931,22 @@ spec:
       volumes:
       - emptyDir: {}
         name: tmp-volume
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: kubernetes-dashboard-http
+  namespace: kubernetes-dashboard
+spec:
+  hostnames:
+  - dashboard.apps.timgiertz.com
+  parentRefs:
+  - kind: Gateway
+    name: shared-default-gateway
+    namespace: default
+    sectionName: shared-https
+  rules:
+  - backendRefs:
+    - name: kubernetes-dashboard-web
+      port: 8000
+    matches: null
