@@ -31,8 +31,9 @@ helm template \
     --set=gatewayAPI.enabled=false \
     --set=envoy.securityContext.capabilities.keepCapNetBindService=true \
     --set=bgpControlPlane.enabled=true \
-    --set hubble.relay.enabled=true \
-    --set hubble.ui.enabled=true > cilium/install-cilium.yaml
+    --set=hubble.relay.enabled=true \
+    --set=hubble.ui.enabled=true \
+    --set=cni.exclusive=false > cilium/install-cilium.yaml
 
 kustomize build ./cilium | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="kube-system"); .contents=load_str("/dev/stdin"))' ../../patches/cilium.yaml
 
@@ -48,6 +49,10 @@ kustomize build ./cert-manager > ../argocd/cert-manager/cert-manager/cert-manage
 
 kustomize build ./istio > ../argocd/istio-system/istio/istio.yaml
 
+## Istio CNI
+
+kustomize build ./istio-cni > ../argocd/kube-system/istio-cni/istio-cni.yaml
+
 ## nginx
 
 kustomize build ./nginx > ../argocd/default/nginx/nginx.yaml
@@ -55,3 +60,7 @@ kustomize build ./nginx > ../argocd/default/nginx/nginx.yaml
 ## Istio Gateway
 
 kustomize build ./istio-gateway > ../argocd/default/gateway/gateway.yaml
+
+## postgres
+
+kustomize build ./postgres > ../argocd/default/postgres/postgres.yaml
