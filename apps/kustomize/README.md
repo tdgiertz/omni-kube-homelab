@@ -47,6 +47,12 @@ kustomize build ./cert-manager > ../argocd/cert-manager/cert-manager/cert-manage
 
 ## Istio
 
+helm template istio-base istio/base -n istio-system --create-namespace > istio/istio-base.yaml
+helm template istiod istio/istiod --namespace istio-system --set profile=ambient --set pilot.env.PILOT_ENABLE_ALPHA_GATEWAY_API=true > istio/istio-control-plane.yaml
+helm template istio-cni istio/cni -n istio-system --set profile=ambient > istio/istio-cni.yaml
+helm template ztunnel istio/ztunnel -n istio-system > istio/istio-ztunnel.yaml
+helm template istio-ingress istio/gateway -n istio-ingress --create-namespace  > istio/istio-gateway.yaml
+
 kustomize build ./istio > ../argocd/istio-system/istio/istio.yaml
 
 ## Istio CNI
@@ -64,3 +70,7 @@ kustomize build ./istio-gateway > ../argocd/default/gateway/gateway.yaml
 ## postgres
 
 kustomize build ./postgres > ../argocd/default/postgres/postgres.yaml
+
+## Kubernetes Dashboard
+
+kustomize build ./kubernetes-dashboard > ../argocd/kubernetes-dashboard/dashboard/dashboard.yaml
