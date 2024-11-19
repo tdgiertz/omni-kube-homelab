@@ -18,7 +18,7 @@ spec:
     namespace: default
     sectionName: shared-tcp
   rules:
-    backendRefs:
+  - backendRefs:
     - name: cluster-example-initdb-rw
       port: 5432
 ---
