@@ -1,118 +1,23 @@
----
-# Builtin: "helm template" does not respect --create-namespace
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: longhorn-system
   labels:
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/audit-version: latest
     pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/warn: privileged
+    pod-security.kubernetes.io/warn-version: latest
+  name: longhorn-system
 ---
-# Source: longhorn/templates/priorityclass.yaml
-apiVersion: scheduling.k8s.io/v1
-kind: PriorityClass
-metadata:
-  name: "longhorn-critical"
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
-description: "Ensure Longhorn pods have the highest priority to prevent any unexpected eviction by the Kubernetes scheduler under node pressure"
-globalDefault: false
-preemptionPolicy: PreemptLowerPriority
-value: 1000000000
----
-# Source: longhorn/templates/serviceaccount.yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: longhorn-service-account
-  namespace: longhorn-system
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
----
-# Source: longhorn/templates/serviceaccount.yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: longhorn-ui-service-account
-  namespace: longhorn-system
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
----
-# Source: longhorn/templates/serviceaccount.yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: longhorn-support-bundle
-  namespace: longhorn-system
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
----
-# Source: longhorn/templates/default-setting.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: longhorn-default-setting
-  namespace: longhorn-system
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
-data:
-  default-setting.yaml: |-
-    priority-class: longhorn-critical
-    disable-revision-counter: true
-    default-data-path: /var/mnt/longhorn/
-    default-replica-count: 2
-    default-data-locality: best-effort
----
-# Source: longhorn/templates/storageclass.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: longhorn-storageclass
-  namespace: longhorn-system
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
-data:
-  storageclass.yaml: |
-    kind: StorageClass
-    apiVersion: storage.k8s.io/v1
-    metadata:
-      name: longhorn
-      annotations:
-        storageclass.kubernetes.io/is-default-class: "true"
-    provisioner: driver.longhorn.io
-    allowVolumeExpansion: true
-    reclaimPolicy: "Delete"
-    volumeBindingMode: Immediate
-    parameters:
-      numberOfReplicas: "3"
-      staleReplicaTimeout: "30"
-      fromBackup: ""
-      fsType: "ext4"
-      dataLocality: "disabled"
-      unmapMarkSnapChainRemoved: "ignored"
-      disableRevisionCounter: "true"
-      dataEngine: "v1"
----
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: backingimagedatasources.longhorn.io
@@ -294,15 +199,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: backingimagemanagers.longhorn.io
@@ -488,15 +392,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: backingimages.longhorn.io
@@ -694,15 +597,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: backupbackingimages.longhorn.io
@@ -852,15 +754,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: backups.longhorn.io
@@ -1079,15 +980,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: backuptargets.longhorn.io
@@ -1284,15 +1184,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: backupvolumes.longhorn.io
@@ -1467,15 +1366,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: engineimages.longhorn.io
@@ -1683,15 +1581,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: engines.longhorn.io
@@ -2083,15 +1980,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: instancemanagers.longhorn.io
@@ -2386,15 +2282,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: nodes.longhorn.io
@@ -2669,15 +2564,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: orphans.longhorn.io
@@ -2784,15 +2678,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: recurringjobs.longhorn.io
@@ -2984,15 +2877,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: replicas.longhorn.io
@@ -3268,15 +3160,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: settings.longhorn.io
@@ -3385,15 +3276,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: sharemanagers.longhorn.io
@@ -3516,15 +3406,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: snapshots.longhorn.io
@@ -3650,15 +3539,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: supportbundles.longhorn.io
@@ -3785,15 +3673,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: systembackups.longhorn.io
@@ -3926,15 +3813,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: systemrestores.longhorn.io
@@ -4039,15 +3925,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: volumeattachments.longhorn.io
@@ -4187,15 +4072,14 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.15.0
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
     longhorn-manager: ""
   name: volumes.longhorn.io
@@ -4593,81 +4477,223 @@ spec:
     subresources:
       status: {}
 ---
-# Source: longhorn/templates/clusterrole.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-service-account
+  namespace: longhorn-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-support-bundle
+  namespace: longhorn-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-ui-service-account
+  namespace: longhorn-system
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: longhorn-role
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
+  name: longhorn-role
 rules:
 - apiGroups:
   - apiextensions.k8s.io
   resources:
   - customresourcedefinitions
   verbs:
-  - "*"
-- apiGroups: [""]
-  resources: ["pods", "events", "persistentvolumes", "persistentvolumeclaims","persistentvolumeclaims/status", "nodes", "proxy/nodes", "pods/log", "secrets", "services", "endpoints", "configmaps", "serviceaccounts"]
-  verbs: ["*"]
-- apiGroups: [""]
-  resources: ["namespaces"]
-  verbs: ["get", "list"]
-- apiGroups: ["apps"]
-  resources: ["daemonsets", "statefulsets", "deployments"]
-  verbs: ["*"]
-- apiGroups: ["batch"]
-  resources: ["jobs", "cronjobs"]
-  verbs: ["*"]
-- apiGroups: ["policy"]
-  resources: ["poddisruptionbudgets", "podsecuritypolicies"]
-  verbs: ["*"]
-- apiGroups: ["scheduling.k8s.io"]
-  resources: ["priorityclasses"]
-  verbs: ["watch", "list"]
-- apiGroups: ["storage.k8s.io"]
-  resources: ["storageclasses", "volumeattachments", "volumeattachments/status", "csinodes", "csidrivers"]
-  verbs: ["*"]
-- apiGroups: ["snapshot.storage.k8s.io"]
-  resources: ["volumesnapshotclasses", "volumesnapshots", "volumesnapshotcontents", "volumesnapshotcontents/status"]
-  verbs: ["*"]
-- apiGroups: ["longhorn.io"]
-  resources: ["volumes", "volumes/status", "engines", "engines/status", "replicas", "replicas/status", "settings", "settings/status",
-              "engineimages", "engineimages/status", "nodes", "nodes/status", "instancemanagers", "instancemanagers/status",
-              "sharemanagers", "sharemanagers/status", "backingimages", "backingimages/status",
-              "backingimagemanagers", "backingimagemanagers/status", "backingimagedatasources", "backingimagedatasources/status",
-              "backuptargets", "backuptargets/status", "backupvolumes", "backupvolumes/status", "backups", "backups/status",
-              "recurringjobs", "recurringjobs/status", "orphans", "orphans/status", "snapshots", "snapshots/status",
-              "supportbundles", "supportbundles/status", "systembackups", "systembackups/status", "systemrestores", "systemrestores/status",
-              "volumeattachments", "volumeattachments/status", "backupbackingimages", "backupbackingimages/status"]
-  verbs: ["*"]
-- apiGroups: ["coordination.k8s.io"]
-  resources: ["leases"]
-  verbs: ["*"]
-- apiGroups: ["metrics.k8s.io"]
-  resources: ["pods", "nodes"]
-  verbs: ["get", "list"]
-- apiGroups: ["apiregistration.k8s.io"]
-  resources: ["apiservices"]
-  verbs: ["list", "watch"]
-- apiGroups: ["admissionregistration.k8s.io"]
-  resources: ["mutatingwebhookconfigurations", "validatingwebhookconfigurations"]
-  verbs: ["get", "list", "create", "patch", "delete"]
-- apiGroups: ["rbac.authorization.k8s.io"]
-  resources: ["roles", "rolebindings", "clusterrolebindings", "clusterroles"]
-  verbs: ["*"]
+  - '*'
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - events
+  - persistentvolumes
+  - persistentvolumeclaims
+  - persistentvolumeclaims/status
+  - nodes
+  - proxy/nodes
+  - pods/log
+  - secrets
+  - services
+  - endpoints
+  - configmaps
+  - serviceaccounts
+  verbs:
+  - '*'
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - apps
+  resources:
+  - daemonsets
+  - statefulsets
+  - deployments
+  verbs:
+  - '*'
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - '*'
+- apiGroups:
+  - policy
+  resources:
+  - poddisruptionbudgets
+  - podsecuritypolicies
+  verbs:
+  - '*'
+- apiGroups:
+  - scheduling.k8s.io
+  resources:
+  - priorityclasses
+  verbs:
+  - watch
+  - list
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - storageclasses
+  - volumeattachments
+  - volumeattachments/status
+  - csinodes
+  - csidrivers
+  verbs:
+  - '*'
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshotclasses
+  - volumesnapshots
+  - volumesnapshotcontents
+  - volumesnapshotcontents/status
+  verbs:
+  - '*'
+- apiGroups:
+  - longhorn.io
+  resources:
+  - volumes
+  - volumes/status
+  - engines
+  - engines/status
+  - replicas
+  - replicas/status
+  - settings
+  - settings/status
+  - engineimages
+  - engineimages/status
+  - nodes
+  - nodes/status
+  - instancemanagers
+  - instancemanagers/status
+  - sharemanagers
+  - sharemanagers/status
+  - backingimages
+  - backingimages/status
+  - backingimagemanagers
+  - backingimagemanagers/status
+  - backingimagedatasources
+  - backingimagedatasources/status
+  - backuptargets
+  - backuptargets/status
+  - backupvolumes
+  - backupvolumes/status
+  - backups
+  - backups/status
+  - recurringjobs
+  - recurringjobs/status
+  - orphans
+  - orphans/status
+  - snapshots
+  - snapshots/status
+  - supportbundles
+  - supportbundles/status
+  - systembackups
+  - systembackups/status
+  - systemrestores
+  - systemrestores/status
+  - volumeattachments
+  - volumeattachments/status
+  - backupbackingimages
+  - backupbackingimages/status
+  verbs:
+  - '*'
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - '*'
+- apiGroups:
+  - metrics.k8s.io
+  resources:
+  - pods
+  - nodes
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - apiregistration.k8s.io
+  resources:
+  - apiservices
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - mutatingwebhookconfigurations
+  - validatingwebhookconfigurations
+  verbs:
+  - get
+  - list
+  - create
+  - patch
+  - delete
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
+  - rolebindings
+  - clusterrolebindings
+  - clusterroles
+  verbs:
+  - '*'
 ---
-# Source: longhorn/templates/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: longhorn-bind
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
+  name: longhorn-bind
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -4677,15 +4703,14 @@ subjects:
   name: longhorn-service-account
   namespace: longhorn-system
 ---
-# Source: longhorn/templates/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: longhorn-support-bundle
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
+  name: longhorn-support-bundle
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -4695,116 +4720,334 @@ subjects:
   name: longhorn-support-bundle
   namespace: longhorn-system
 ---
-# Source: longhorn/templates/daemonset-sa.yaml
 apiVersion: v1
-kind: Service
+data:
+  default-setting.yaml: |-
+    backup-target: s3://longhorn@us-central/
+    backup-target-credential-secret: minio-secret
+    priority-class: longhorn-critical
+    disable-revision-counter: true
+    default-data-path: /var/mnt/longhorn/
+    default-replica-count: 2
+    default-data-locality: best-effort
+kind: ConfigMap
 metadata:
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
-    app: longhorn-manager
-  name: longhorn-backend
+  name: longhorn-default-setting
   namespace: longhorn-system
-spec:
-  type: ClusterIP
-  selector:
-    app: longhorn-manager
-  ports:
-  - name: manager
-    port: 9500
-    targetPort: manager
 ---
-# Source: longhorn/templates/deployment-ui.yaml
-kind: Service
 apiVersion: v1
+data:
+  storageclass.yaml: |
+    kind: StorageClass
+    apiVersion: storage.k8s.io/v1
+    metadata:
+      name: longhorn
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: driver.longhorn.io
+    allowVolumeExpansion: true
+    reclaimPolicy: "Delete"
+    volumeBindingMode: Immediate
+    parameters:
+      numberOfReplicas: "3"
+      staleReplicaTimeout: "30"
+      fromBackup: ""
+      fsType: "ext4"
+      dataLocality: "disabled"
+      unmapMarkSnapChainRemoved: "ignored"
+      disableRevisionCounter: "true"
+      dataEngine: "v1"
+kind: ConfigMap
 metadata:
   labels:
-    app.kubernetes.io/name: longhorn
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
-    app: longhorn-ui
-  name: longhorn-frontend
+  name: longhorn-storageclass
   namespace: longhorn-system
-spec:
-  type: ClusterIP
-  selector:
-    app: longhorn-ui
-  ports:
-  - name: http
-    port: 80
-    targetPort: http
-    nodePort: null
 ---
-# Source: longhorn/templates/services.yaml
 apiVersion: v1
-kind: Service
+data:
+  AWS_ACCESS_KEY_ID: QVp1a3pKSGZWSFgwaG1uRFZ6R0s=
+  AWS_ENDPOINTS: aHR0cHM6Ly9zMy50aW1naWVydHouY29tOjQ0Mw==
+  AWS_SECRET_ACCESS_KEY: bU1GOU1BTjJuNFlZRUFtOURjeFhscnZoOEZwYlRvb2F2S25KcnQ3MA==
+kind: Secret
 metadata:
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
-    app: longhorn-conversion-webhook
-  name: longhorn-conversion-webhook
+  name: minio-secret
   namespace: longhorn-system
-spec:
-  type: ClusterIP
-  selector:
-    longhorn.io/conversion-webhook: longhorn-conversion-webhook
-  ports:
-  - name: conversion-webhook
-    port: 9501
-    targetPort: conversion-wh
+type: Opaque
 ---
-# Source: longhorn/templates/services.yaml
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
     app: longhorn-admission-webhook
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
   name: longhorn-admission-webhook
   namespace: longhorn-system
 spec:
-  type: ClusterIP
-  selector:
-    longhorn.io/admission-webhook: longhorn-admission-webhook
   ports:
   - name: admission-webhook
     port: 9502
     targetPort: admission-wh
+  selector:
+    longhorn.io/admission-webhook: longhorn-admission-webhook
+  type: ClusterIP
 ---
-# Source: longhorn/templates/services.yaml
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: longhorn
+    app: longhorn-manager
     app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
     app.kubernetes.io/version: v1.7.2
+  name: longhorn-backend
+  namespace: longhorn-system
+spec:
+  ports:
+  - name: manager
+    port: 9500
+    targetPort: manager
+  selector:
+    app: longhorn-manager
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: longhorn-conversion-webhook
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-conversion-webhook
+  namespace: longhorn-system
+spec:
+  ports:
+  - name: conversion-webhook
+    port: 9501
+    targetPort: conversion-wh
+  selector:
+    longhorn.io/conversion-webhook: longhorn-conversion-webhook
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: longhorn-ui
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-frontend
+  namespace: longhorn-system
+spec:
+  ports:
+  - name: http
+    nodePort: null
+    port: 80
+    targetPort: http
+  selector:
+    app: longhorn-ui
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
     app: longhorn-recovery-backend
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
   name: longhorn-recovery-backend
   namespace: longhorn-system
 spec:
-  type: ClusterIP
-  selector:
-    longhorn.io/recovery-backend: longhorn-recovery-backend
   ports:
   - name: recovery-backend
     port: 9503
     targetPort: recov-backend
+  selector:
+    longhorn.io/recovery-backend: longhorn-recovery-backend
+  type: ClusterIP
 ---
-# Source: longhorn/templates/daemonset-sa.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: longhorn-ui-service
+  namespace: longhorn-system
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: longhorn-ui
+---
+apiVersion: scheduling.k8s.io/v1
+description: Ensure Longhorn pods have the highest priority to prevent any unexpected
+  eviction by the Kubernetes scheduler under node pressure
+globalDefault: false
+kind: PriorityClass
+metadata:
+  labels:
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-critical
+preemptionPolicy: PreemptLowerPriority
+value: 1000000000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-driver-deployer
+  namespace: longhorn-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: longhorn-driver-deployer
+  template:
+    metadata:
+      labels:
+        app: longhorn-driver-deployer
+        app.kubernetes.io/instance: longhorn
+        app.kubernetes.io/name: longhorn
+        app.kubernetes.io/version: v1.7.2
+    spec:
+      containers:
+      - command:
+        - longhorn-manager
+        - -d
+        - deploy-driver
+        - --manager-image
+        - longhornio/longhorn-manager:v1.7.2
+        - --manager-url
+        - http://longhorn-backend:9500/v1
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName
+        - name: CSI_ATTACHER_IMAGE
+          value: longhornio/csi-attacher:v4.7.0
+        - name: CSI_PROVISIONER_IMAGE
+          value: longhornio/csi-provisioner:v4.0.1-20241007
+        - name: CSI_NODE_DRIVER_REGISTRAR_IMAGE
+          value: longhornio/csi-node-driver-registrar:v2.12.0
+        - name: CSI_RESIZER_IMAGE
+          value: longhornio/csi-resizer:v1.12.0
+        - name: CSI_SNAPSHOTTER_IMAGE
+          value: longhornio/csi-snapshotter:v7.0.2-20241007
+        - name: CSI_LIVENESS_PROBE_IMAGE
+          value: longhornio/livenessprobe:v2.14.0
+        image: longhornio/longhorn-manager:v1.7.2
+        imagePullPolicy: IfNotPresent
+        name: longhorn-driver-deployer
+      initContainers:
+      - command:
+        - sh
+        - -c
+        - while [ $(curl -m 1 -s -o /dev/null -w "%{http_code}" http://longhorn-backend:9500/v1)
+          != "200" ]; do echo waiting; sleep 2; done
+        image: longhornio/longhorn-manager:v1.7.2
+        name: wait-longhorn-manager
+      priorityClassName: longhorn-critical
+      securityContext:
+        runAsUser: 0
+      serviceAccountName: longhorn-service-account
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: longhorn-ui
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
+  name: longhorn-ui
+  namespace: longhorn-system
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: longhorn-ui
+  template:
+    metadata:
+      labels:
+        app: longhorn-ui
+        app.kubernetes.io/instance: longhorn
+        app.kubernetes.io/name: longhorn
+        app.kubernetes.io/version: v1.7.2
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - longhorn-ui
+              topologyKey: kubernetes.io/hostname
+            weight: 1
+      containers:
+      - env:
+        - name: LONGHORN_MANAGER_IP
+          value: http://longhorn-backend:9500
+        - name: LONGHORN_UI_PORT
+          value: "8000"
+        image: longhornio/longhorn-ui:v1.7.2
+        imagePullPolicy: IfNotPresent
+        name: longhorn-ui
+        ports:
+        - containerPort: 8000
+          name: http
+        volumeMounts:
+        - mountPath: /var/cache/nginx/
+          name: nginx-cache
+        - mountPath: /var/config/nginx/
+          name: nginx-config
+        - mountPath: /var/run/
+          name: var-run
+      priorityClassName: longhorn-critical
+      serviceAccountName: longhorn-ui-service-account
+      volumes:
+      - emptyDir: {}
+        name: nginx-cache
+      - emptyDir: {}
+        name: nginx-config
+      - emptyDir: {}
+        name: var-run
+---
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
     app: longhorn-manager
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/version: v1.7.2
   name: longhorn-manager
   namespace: longhorn-system
 spec:
@@ -4814,62 +5057,31 @@ spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: longhorn
-        app.kubernetes.io/instance: longhorn
-        app.kubernetes.io/version: v1.7.2
         app: longhorn-manager
+        app.kubernetes.io/instance: longhorn
+        app.kubernetes.io/name: longhorn
+        app.kubernetes.io/version: v1.7.2
     spec:
       containers:
-      - name: longhorn-manager
-        image: longhornio/longhorn-manager:v1.7.2
-        imagePullPolicy: IfNotPresent
-        securityContext:
-          privileged: true
-        command:
+      - command:
         - longhorn-manager
         - -d
         - daemon
         - --engine-image
-        - "longhornio/longhorn-engine:v1.7.2"
+        - longhornio/longhorn-engine:v1.7.2
         - --instance-manager-image
-        - "longhornio/longhorn-instance-manager:v1.7.2"
+        - longhornio/longhorn-instance-manager:v1.7.2
         - --share-manager-image
-        - "longhornio/longhorn-share-manager:v1.7.2"
+        - longhornio/longhorn-share-manager:v1.7.2
         - --backing-image-manager-image
-        - "longhornio/backing-image-manager:v1.7.2"
+        - longhornio/backing-image-manager:v1.7.2
         - --support-bundle-manager-image
-        - "longhornio/support-bundle-kit:v0.0.45"
+        - longhornio/support-bundle-kit:v0.0.45
         - --manager-image
-        - "longhornio/longhorn-manager:v1.7.2"
+        - longhornio/longhorn-manager:v1.7.2
         - --service-account
         - longhorn-service-account
         - --upgrade-version-check
-        ports:
-        - containerPort: 9500
-          name: manager
-        - containerPort: 9501
-          name: conversion-wh
-        - containerPort: 9502
-          name: admission-wh
-        - containerPort: 9503
-          name: recov-backend
-        readinessProbe:
-          httpGet:
-            path: /v1/healthz
-            port: 9501
-            scheme: HTTPS
-        volumeMounts:
-        - name: boot
-          mountPath: /host/boot/
-        - name: dev
-          mountPath: /host/dev/
-        - name: proc
-          mountPath: /host/proc/
-        - name: longhorn
-          mountPath: /var/lib/longhorn/
-          mountPropagation: Bidirectional
-        - name: longhorn-grpc-tls
-          mountPath: /tls-files/
         env:
         - name: POD_NAME
           valueFrom:
@@ -4887,179 +5099,66 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-      - name: pre-pull-share-manager-image
+        image: longhornio/longhorn-manager:v1.7.2
         imagePullPolicy: IfNotPresent
+        name: longhorn-manager
+        ports:
+        - containerPort: 9500
+          name: manager
+        - containerPort: 9501
+          name: conversion-wh
+        - containerPort: 9502
+          name: admission-wh
+        - containerPort: 9503
+          name: recov-backend
+        readinessProbe:
+          httpGet:
+            path: /v1/healthz
+            port: 9501
+            scheme: HTTPS
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /host/boot/
+          name: boot
+        - mountPath: /host/dev/
+          name: dev
+        - mountPath: /host/proc/
+          name: proc
+        - mountPath: /var/lib/longhorn/
+          mountPropagation: Bidirectional
+          name: longhorn
+        - mountPath: /tls-files/
+          name: longhorn-grpc-tls
+      - command:
+        - sh
+        - -c
+        - echo share-manager image pulled && sleep infinity
         image: longhornio/longhorn-share-manager:v1.7.2
-        command: ["sh", "-c", "echo share-manager image pulled && sleep infinity"]
+        imagePullPolicy: IfNotPresent
+        name: pre-pull-share-manager-image
+      priorityClassName: longhorn-critical
+      serviceAccountName: longhorn-service-account
       volumes:
-      - name: boot
-        hostPath:
+      - hostPath:
           path: /boot/
-      - name: dev
-        hostPath:
+        name: boot
+      - hostPath:
           path: /dev/
-      - name: proc
-        hostPath:
+        name: dev
+      - hostPath:
           path: /proc/
-      - name: longhorn
-        hostPath:
+        name: proc
+      - hostPath:
           path: /var/lib/longhorn/
+        name: longhorn
       - name: longhorn-grpc-tls
         secret:
-          secretName: longhorn-grpc-tls
           optional: true
-      priorityClassName: "longhorn-critical"
-      serviceAccountName: longhorn-service-account
+          secretName: longhorn-grpc-tls
   updateStrategy:
     rollingUpdate:
-      maxUnavailable: "100%"
----
-# Source: longhorn/templates/deployment-driver.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: longhorn-driver-deployer
-  namespace: longhorn-system
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: longhorn-driver-deployer
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: longhorn
-        app.kubernetes.io/instance: longhorn
-        app.kubernetes.io/version: v1.7.2
-        app: longhorn-driver-deployer
-    spec:
-      initContainers:
-        - name: wait-longhorn-manager
-          image: longhornio/longhorn-manager:v1.7.2
-          command: ['sh', '-c', 'while [ $(curl -m 1 -s -o /dev/null -w "%{http_code}" http://longhorn-backend:9500/v1) != "200" ]; do echo waiting; sleep 2; done']
-      containers:
-        - name: longhorn-driver-deployer
-          image: longhornio/longhorn-manager:v1.7.2
-          imagePullPolicy: IfNotPresent
-          command:
-          - longhorn-manager
-          - -d
-          - deploy-driver
-          - --manager-image
-          - "longhornio/longhorn-manager:v1.7.2"
-          - --manager-url
-          - http://longhorn-backend:9500/v1
-          env:
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-          - name: NODE_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: spec.nodeName
-          - name: SERVICE_ACCOUNT
-            valueFrom:
-              fieldRef:
-                fieldPath: spec.serviceAccountName
-          - name: CSI_ATTACHER_IMAGE
-            value: "longhornio/csi-attacher:v4.7.0"
-          - name: CSI_PROVISIONER_IMAGE
-            value: "longhornio/csi-provisioner:v4.0.1-20241007"
-          - name: CSI_NODE_DRIVER_REGISTRAR_IMAGE
-            value: "longhornio/csi-node-driver-registrar:v2.12.0"
-          - name: CSI_RESIZER_IMAGE
-            value: "longhornio/csi-resizer:v1.12.0"
-          - name: CSI_SNAPSHOTTER_IMAGE
-            value: "longhornio/csi-snapshotter:v7.0.2-20241007"
-          - name: CSI_LIVENESS_PROBE_IMAGE
-            value: "longhornio/livenessprobe:v2.14.0"
-      priorityClassName: "longhorn-critical"
-      serviceAccountName: longhorn-service-account
-      securityContext:
-        runAsUser: 0
----
-# Source: longhorn/templates/deployment-ui.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app.kubernetes.io/name: longhorn
-    app.kubernetes.io/instance: longhorn
-    app.kubernetes.io/version: v1.7.2
-    app: longhorn-ui
-  name: longhorn-ui
-  namespace: longhorn-system
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: longhorn-ui
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: longhorn
-        app.kubernetes.io/instance: longhorn
-        app.kubernetes.io/version: v1.7.2
-        app: longhorn-ui
-    spec:
-      serviceAccountName: longhorn-ui-service-account
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - longhorn-ui
-              topologyKey: kubernetes.io/hostname
-      containers:
-      - name: longhorn-ui
-        image: longhornio/longhorn-ui:v1.7.2
-        imagePullPolicy: IfNotPresent
-        volumeMounts:
-        - name : nginx-cache
-          mountPath: /var/cache/nginx/
-        - name : nginx-config
-          mountPath: /var/config/nginx/
-        - name: var-run
-          mountPath: /var/run/
-        ports:
-        - containerPort: 8000
-          name: http
-        env:
-          - name: LONGHORN_MANAGER_IP
-            value: "http://longhorn-backend:9500"
-          - name: LONGHORN_UI_PORT
-            value: "8000"
-      volumes:
-      - emptyDir: {}
-        name: nginx-cache
-      - emptyDir: {}
-        name: nginx-config
-      - emptyDir: {}
-        name: var-run
-      priorityClassName: "longhorn-critical"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: longhorn-ui-service
-  namespace: longhorn-system
-spec:
-  ports:
-  - protocol: TCP
-    port: 8000
-    targetPort: 8000
-  selector:
-    app: longhorn-ui
+      maxUnavailable: 100%
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -5067,16 +5166,15 @@ metadata:
   name: longhorn-system-http
   namespace: longhorn-system
 spec:
+  hostnames:
+  - longhorn.apps.timgiertz.com
   parentRefs:
   - kind: Gateway
     name: shared-default-gateway
     namespace: default
     sectionName: shared-https
-  hostnames:
-  - longhorn.apps.timgiertz.com
   rules:
-  - matches:
-    backendRefs:
+  - backendRefs:
     - name: longhorn-ui-service
       port: 8000
----
+    matches: null
