@@ -5,5 +5,6 @@ resources:
   - jaeger.yaml
   - loki.yaml
   - namespace.yaml
+  - kiali-crds.yaml
   - kiali-operator.yaml
   - http-route.yaml
