@@ -1,4 +1,4 @@
-Assumes working directory oof kustomize
+Assumes working directory of kustomize
 
 ## ArgoCD
 

@@ -468,6 +468,10 @@ cluster:
                                       to use for rendering manifests
                                     type: string
                                 type: object
+                              name:
+                                description: Name is used to refer to a source and is displayed
+                                  in the UI. It is used in multi-source Applications.
+                                type: string
                               path:
                                 description: Path is a directory path within the Git repository,
                                   and is only valid for applications sourced from Git.
@@ -840,6 +844,10 @@ cluster:
                                         to use for rendering manifests
                                       type: string
                                   type: object
+                                name:
+                                  description: Name is used to refer to a source and is displayed
+                                    in the UI. It is used in multi-source Applications.
+                                  type: string
                                 path:
                                   description: Path is a directory path within the Git repository,
                                     and is only valid for applications sourced from Git.
@@ -1322,6 +1330,10 @@ cluster:
                                   use for rendering manifests
                                 type: string
                             type: object
+                          name:
+                            description: Name is used to refer to a source and is displayed
+                              in the UI. It is used in multi-source Applications.
+                            type: string
                           path:
                             description: Path is a directory path within the Git repository,
                               and is only valid for applications sourced from Git.
@@ -1684,6 +1696,10 @@ cluster:
                                     to use for rendering manifests
                                   type: string
                               type: object
+                            name:
+                              description: Name is used to refer to a source and is displayed
+                                in the UI. It is used in multi-source Applications.
+                              type: string
                             path:
                               description: Path is a directory path within the Git repository,
                                 and is only valid for applications sourced from Git.
@@ -2212,6 +2228,10 @@ cluster:
                                         to use for rendering manifests
                                       type: string
                                   type: object
+                                name:
+                                  description: Name is used to refer to a source and is displayed
+                                    in the UI. It is used in multi-source Applications.
+                                  type: string
                                 path:
                                   description: Path is a directory path within the Git repository,
                                     and is only valid for applications sourced from Git.
@@ -2587,6 +2607,10 @@ cluster:
                                           to use for rendering manifests
                                         type: string
                                     type: object
+                                  name:
+                                    description: Name is used to refer to a source and is
+                                      displayed in the UI. It is used in multi-source Applications.
+                                    type: string
                                   path:
                                     description: Path is a directory path within the Git repository,
                                       and is only valid for applications sourced from Git.
@@ -3111,6 +3135,11 @@ cluster:
                                               Kustomize to use for rendering manifests
                                             type: string
                                         type: object
+                                      name:
+                                        description: Name is used to refer to a source and
+                                          is displayed in the UI. It is used in multi-source
+                                          Applications.
+                                        type: string
                                       path:
                                         description: Path is a directory path within the Git
                                           repository, and is only valid for applications sourced
@@ -3505,6 +3534,11 @@ cluster:
                                                 of Kustomize to use for rendering manifests
                                               type: string
                                           type: object
+                                        name:
+                                          description: Name is used to refer to a source and
+                                            is displayed in the UI. It is used in multi-source
+                                            Applications.
+                                          type: string
                                         path:
                                           description: Path is a directory path within the
                                             Git repository, and is only valid for applications
@@ -4009,6 +4043,10 @@ cluster:
                                           to use for rendering manifests
                                         type: string
                                     type: object
+                                  name:
+                                    description: Name is used to refer to a source and is
+                                      displayed in the UI. It is used in multi-source Applications.
+                                    type: string
                                   path:
                                     description: Path is a directory path within the Git repository,
                                       and is only valid for applications sourced from Git.
@@ -4395,6 +4433,10 @@ cluster:
                                             to use for rendering manifests
                                           type: string
                                       type: object
+                                    name:
+                                      description: Name is used to refer to a source and is
+                                        displayed in the UI. It is used in multi-source Applications.
+                                      type: string
                                     path:
                                       description: Path is a directory path within the Git
                                         repository, and is only valid for applications sourced
@@ -4925,6 +4967,10 @@ cluster:
                                           to use for rendering manifests
                                         type: string
                                     type: object
+                                  name:
+                                    description: Name is used to refer to a source and is
+                                      displayed in the UI. It is used in multi-source Applications.
+                                    type: string
                                   path:
                                     description: Path is a directory path within the Git repository,
                                       and is only valid for applications sourced from Git.
@@ -5311,6 +5357,10 @@ cluster:
                                             to use for rendering manifests
                                           type: string
                                       type: object
+                                    name:
+                                      description: Name is used to refer to a source and is
+                                        displayed in the UI. It is used in multi-source Applications.
+                                      type: string
                                     path:
                                       description: Path is a directory path within the Git
                                         repository, and is only valid for applications sourced
@@ -5747,6 +5797,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -5979,6 +6031,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -6375,6 +6429,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -6607,6 +6663,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -7002,6 +7060,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -7234,6 +7294,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -7609,6 +7671,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -7841,6 +7905,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -8241,6 +8307,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -8473,6 +8541,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -8869,6 +8939,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -9101,6 +9173,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -9496,6 +9570,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -9728,6 +9804,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -10103,6 +10181,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -10335,6 +10415,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -10718,6 +10800,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -10950,6 +11034,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -11552,6 +11638,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -11784,6 +11872,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -12381,6 +12471,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -12613,6 +12705,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -13005,6 +13099,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -13237,6 +13333,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -13639,6 +13737,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -13871,6 +13971,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -14267,6 +14369,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -14499,6 +14603,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -14894,6 +15000,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -15126,6 +15234,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -15501,6 +15611,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -15733,6 +15845,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -16116,6 +16230,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -16348,6 +16464,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -16950,6 +17068,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -17182,6 +17302,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -17779,6 +17901,8 @@ cluster:
                                                           version:
                                                             type: string
                                                         type: object
+                                                      name:
+                                                        type: string
                                                       path:
                                                         type: string
                                                       plugin:
@@ -18011,6 +18135,8 @@ cluster:
                                                             version:
                                                               type: string
                                                           type: object
+                                                        name:
+                                                          type: string
                                                         path:
                                                           type: string
                                                         plugin:
@@ -18407,6 +18533,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -18639,6 +18767,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -19021,6 +19151,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -19253,6 +19385,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -19855,6 +19989,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -20087,6 +20223,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -20684,6 +20822,8 @@ cluster:
                                                 version:
                                                   type: string
                                               type: object
+                                            name:
+                                              type: string
                                             path:
                                               type: string
                                             plugin:
@@ -20916,6 +21056,8 @@ cluster:
                                                   version:
                                                     type: string
                                                 type: object
+                                              name:
+                                                type: string
                                               path:
                                                 type: string
                                               plugin:
@@ -21383,6 +21525,8 @@ cluster:
                                       version:
                                         type: string
                                     type: object
+                                  name:
+                                    type: string
                                   path:
                                     type: string
                                   plugin:
@@ -21615,6 +21759,8 @@ cluster:
                                         version:
                                           type: string
                                       type: object
+                                    name:
+                                      type: string
                                     path:
                                       type: string
                                     plugin:
@@ -24672,7 +24818,7 @@ cluster:
               generators:
               - list:
                   elements:
-                  - repoPath: apps/argocd/*/*
+                  - repoPath: deployment/*/*
                     repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
                     revision: HEAD
               - git:
@@ -24682,11 +24828,10 @@ cluster:
                   revision: '{{revision}}'
           template:
             metadata:
-              name: '{{path[2]}}-{{path[3]}}'
+              name: '{{path[2]}}'
               namespace: argocd
             spec:
               destination:
-                namespace: '{{path[2]}}'
                 server: https://kubernetes.default.svc
               ignoreDifferences:
               - jsonPointers:
@@ -24709,7 +24854,7 @@ cluster:
                 kind: Secret
                 name: hubble-relay-client-certs
                 namespace: kube-system
-              project: '{{path[0]}}'
+              project: '{{path[1]}}'
               source:
                 path: '{{path}}'
                 repoURL: '{{repoURL}}'
