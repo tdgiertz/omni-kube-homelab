@@ -1,0 +1,6 @@
+namespace: kiali-operator
+
+resources:
+  - namespace.yaml
+  - kiali-operator.yaml
+  - http-route.yaml
