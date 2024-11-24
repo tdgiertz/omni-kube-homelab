@@ -1,8 +1,8 @@
-# istio-base
+# istio-gateway
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: istio-system
+  name: istio-ingress
   labels:
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/enforce-version: latest
