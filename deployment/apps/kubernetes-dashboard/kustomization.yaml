@@ -1,0 +1,4 @@
+resources:
+  - dashboard.yaml
+  - http-route.yaml
+  - user-account.yaml
