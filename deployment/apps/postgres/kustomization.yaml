@@ -1,0 +1,5 @@
+namespace: postgres-dev
+
+resources:
+  - namespace.yaml
+  - postgres.yaml
