@@ -8,9 +8,9 @@ kustomize build ./argocd | yq -i 'with(.cluster.inlineManifests.[] | select(.nam
 
 kustomize build ./argocd-http-route > ../argocd/argocd/http-route/http-route.yaml
 
-## Longhorn
+## Cert-Manager
 
-kustomize build ./longhorn > ../argocd/longhorn-system/storage/storage.yaml
+kustomize build ./cert-manager > ../argocd/cert-manager/cert-manager/cert-manager.yaml
 
 ## Cilium
 
@@ -41,10 +41,6 @@ kustomize build ./cilium | yq -i 'with(.cluster.inlineManifests.[] | select(.nam
 
 kustomize build ./CloudNativePG > ../argocd/cnpg-system/cnpg/manager.yaml
 
-## Cert-Manager
-
-kustomize build ./cert-manager > ../argocd/cert-manager/cert-manager/cert-manager.yaml
-
 ## Istio
 
 helm template istio-base istio/base -n istio-system --create-namespace > istio/istio-base.yaml
@@ -55,22 +51,22 @@ helm template istio-ingress istio/gateway -n istio-ingress --create-namespace  >
 
 kustomize build ./istio > ../argocd/istio-system/istio/istio.yaml
 
-## Istio CNI
+## Istio Gateway
 
-kustomize build ./istio-cni > ../argocd/kube-system/istio-cni/istio-cni.yaml
+kustomize build ./istio-gateway > ../argocd/default/gateway/gateway.yaml
+
+## Kubernetes Dashboard
+
+kustomize build ./kubernetes-dashboard > ../argocd/kubernetes-dashboard/dashboard/dashboard.yaml
+
+## Longhorn
+
+kustomize build ./longhorn > ../argocd/longhorn-system/storage/storage.yaml
 
 ## nginx
 
 kustomize build ./nginx > ../argocd/default/nginx/nginx.yaml
 
-## Istio Gateway
-
-kustomize build ./istio-gateway > ../argocd/default/gateway/gateway.yaml
-
 ## postgres
 
 kustomize build ./postgres > ../argocd/default/postgres/postgres.yaml
-
-## Kubernetes Dashboard
-
-kustomize build ./kubernetes-dashboard > ../argocd/kubernetes-dashboard/dashboard/dashboard.yaml
