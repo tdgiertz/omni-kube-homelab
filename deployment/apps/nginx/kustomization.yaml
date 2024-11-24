@@ -1,2 +1,4 @@
+namespace: nginx-dev
+
 resources:
   - nginx.yaml
