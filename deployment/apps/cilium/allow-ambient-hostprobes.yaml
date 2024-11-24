@@ -1,0 +1,15 @@
+# https://istio.io/latest/docs/ambient/install/platform-prerequisites/#cilium
+# This policy override is not required unless you already have other default-deny NetworkPolicies or CiliumNetworkPolicies applied in your cluster.
+apiVersion: "cilium.io/v2"
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: "allow-ambient-hostprobes"
+spec:
+  description: "Allows SNAT-ed kubelet health check probes into ambient pods"
+  enableDefaultDeny:
+    egress: false
+    ingress: false
+  endpointSelector: {}
+  ingress:
+  - fromCIDR:
+    - "192.168.100.128/32"

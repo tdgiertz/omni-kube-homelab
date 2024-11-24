@@ -1,0 +1,6 @@
+namespace: kube-system
+
+resources:
+  - install-cilium.yaml
+  - http-route.yaml
+  - cilium-bgp.yaml
