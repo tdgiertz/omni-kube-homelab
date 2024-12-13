@@ -2,4 +2,5 @@ namespace: postgres-dev
 
 resources:
   - namespace.yaml
+  - user-secret.yaml
   - postgres.yaml
