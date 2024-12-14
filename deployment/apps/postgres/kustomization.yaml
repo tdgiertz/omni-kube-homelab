@@ -5,4 +5,4 @@ resources:
   - postgres.yaml
 
 generators:
-  - ../secret-generator.yaml
+  - secret-generator.yaml
