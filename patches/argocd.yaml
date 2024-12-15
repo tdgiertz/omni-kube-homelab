@@ -317,6 +317,10 @@ cluster:
                                     description: SkipCrds skips custom resource definition
                                       installation step (Helm's --skip-crds)
                                     type: boolean
+                                  skipSchemaValidation:
+                                    description: SkipSchemaValidation skips JSON schema validation
+                                      (Helm's --skip-schema-validation)
+                                    type: boolean
                                   skipTests:
                                     description: SkipTests skips test manifest installation
                                       step (Helm's --skip-tests).
@@ -690,6 +694,10 @@ cluster:
                                     skipCrds:
                                       description: SkipCrds skips custom resource definition
                                         installation step (Helm's --skip-crds)
+                                      type: boolean
+                                    skipSchemaValidation:
+                                      description: SkipSchemaValidation skips JSON schema
+                                        validation (Helm's --skip-schema-validation)
                                       type: boolean
                                     skipTests:
                                       description: SkipTests skips test manifest installation
@@ -1180,6 +1188,10 @@ cluster:
                                 description: SkipCrds skips custom resource definition installation
                                   step (Helm's --skip-crds)
                                 type: boolean
+                              skipSchemaValidation:
+                                description: SkipSchemaValidation skips JSON schema validation
+                                  (Helm's --skip-schema-validation)
+                                type: boolean
                               skipTests:
                                 description: SkipTests skips test manifest installation step
                                   (Helm's --skip-tests).
@@ -1545,6 +1557,10 @@ cluster:
                                   description: SkipCrds skips custom resource definition installation
                                     step (Helm's --skip-crds)
                                   type: boolean
+                                skipSchemaValidation:
+                                  description: SkipSchemaValidation skips JSON schema validation
+                                    (Helm's --skip-schema-validation)
+                                  type: boolean
                                 skipTests:
                                   description: SkipTests skips test manifest installation
                                     step (Helm's --skip-tests).
@@ -1878,6 +1894,11 @@ cluster:
                         description: Health contains information about the application's current
                           health status
                         properties:
+                          lastTransitionTime:
+                            description: LastTransitionTime is the time the HealthStatus was
+                              set or updated
+                            format: date-time
+                            type: string
                           message:
                             description: Message is a human-readable informational message
                               describing the health status
@@ -2074,6 +2095,10 @@ cluster:
                                     skipCrds:
                                       description: SkipCrds skips custom resource definition
                                         installation step (Helm's --skip-crds)
+                                      type: boolean
+                                    skipSchemaValidation:
+                                      description: SkipSchemaValidation skips JSON schema
+                                        validation (Helm's --skip-schema-validation)
                                       type: boolean
                                     skipTests:
                                       description: SkipTests skips test manifest installation
@@ -2451,6 +2476,10 @@ cluster:
                                       skipCrds:
                                         description: SkipCrds skips custom resource definition
                                           installation step (Helm's --skip-crds)
+                                        type: boolean
+                                      skipSchemaValidation:
+                                        description: SkipSchemaValidation skips JSON schema
+                                          validation (Helm's --skip-schema-validation)
                                         type: boolean
                                       skipTests:
                                         description: SkipTests skips test manifest installation
@@ -2979,6 +3008,10 @@ cluster:
                                             description: SkipCrds skips custom resource definition
                                               installation step (Helm's --skip-crds)
                                             type: boolean
+                                          skipSchemaValidation:
+                                            description: SkipSchemaValidation skips JSON schema
+                                              validation (Helm's --skip-schema-validation)
+                                            type: boolean
                                           skipTests:
                                             description: SkipTests skips test manifest installation
                                               step (Helm's --skip-tests).
@@ -3374,6 +3407,10 @@ cluster:
                                             skipCrds:
                                               description: SkipCrds skips custom resource
                                                 definition installation step (Helm's --skip-crds)
+                                              type: boolean
+                                            skipSchemaValidation:
+                                              description: SkipSchemaValidation skips JSON
+                                                schema validation (Helm's --skip-schema-validation)
                                               type: boolean
                                             skipTests:
                                               description: SkipTests skips test manifest installation
@@ -3888,6 +3925,10 @@ cluster:
                                         description: SkipCrds skips custom resource definition
                                           installation step (Helm's --skip-crds)
                                         type: boolean
+                                      skipSchemaValidation:
+                                        description: SkipSchemaValidation skips JSON schema
+                                          validation (Helm's --skip-schema-validation)
+                                        type: boolean
                                       skipTests:
                                         description: SkipTests skips test manifest installation
                                           step (Helm's --skip-tests).
@@ -4277,6 +4318,10 @@ cluster:
                                           description: SkipCrds skips custom resource definition
                                             installation step (Helm's --skip-crds)
                                           type: boolean
+                                        skipSchemaValidation:
+                                          description: SkipSchemaValidation skips JSON schema
+                                            validation (Helm's --skip-schema-validation)
+                                          type: boolean
                                         skipTests:
                                           description: SkipTests skips test manifest installation
                                             step (Helm's --skip-tests).
@@ -4543,6 +4588,11 @@ cluster:
                               description: HealthStatus contains information about the currently
                                 observed health state of an application or resource
                               properties:
+                                lastTransitionTime:
+                                  description: LastTransitionTime is the time the HealthStatus
+                                    was set or updated
+                                  format: date-time
+                                  type: string
                                 message:
                                   description: Message is a human-readable informational message
                                     describing the health status
@@ -4811,6 +4861,10 @@ cluster:
                                       skipCrds:
                                         description: SkipCrds skips custom resource definition
                                           installation step (Helm's --skip-crds)
+                                        type: boolean
+                                      skipSchemaValidation:
+                                        description: SkipSchemaValidation skips JSON schema
+                                          validation (Helm's --skip-schema-validation)
                                         type: boolean
                                       skipTests:
                                         description: SkipTests skips test manifest installation
@@ -5200,6 +5254,10 @@ cluster:
                                         skipCrds:
                                           description: SkipCrds skips custom resource definition
                                             installation step (Helm's --skip-crds)
+                                          type: boolean
+                                        skipSchemaValidation:
+                                          description: SkipSchemaValidation skips JSON schema
+                                            validation (Helm's --skip-schema-validation)
                                           type: boolean
                                         skipTests:
                                           description: SkipTests skips test manifest installation
@@ -5697,6 +5755,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -5930,6 +5990,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -6329,6 +6391,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -6562,6 +6626,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -6960,6 +7026,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -7193,6 +7261,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -7571,6 +7641,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -7804,6 +7876,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -8207,6 +8281,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -8440,6 +8516,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -8839,6 +8917,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -9072,6 +9152,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -9470,6 +9552,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -9703,6 +9787,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -10081,6 +10167,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -10314,6 +10402,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -10700,6 +10790,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -10933,6 +11025,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -11538,6 +11632,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -11771,6 +11867,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -12371,6 +12469,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -12604,6 +12704,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -12999,6 +13101,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -13232,6 +13336,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -13637,6 +13743,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -13870,6 +13978,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -14269,6 +14379,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -14502,6 +14614,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -14900,6 +15014,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -15133,6 +15249,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -15511,6 +15629,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -15744,6 +15864,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -16130,6 +16252,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -16363,6 +16487,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -16968,6 +17094,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -17201,6 +17329,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -17801,6 +17931,8 @@ cluster:
                                                             type: string
                                                           skipCrds:
                                                             type: boolean
+                                                          skipSchemaValidation:
+                                                            type: boolean
                                                           skipTests:
                                                             type: boolean
                                                           valueFiles:
@@ -18034,6 +18166,8 @@ cluster:
                                                             releaseName:
                                                               type: string
                                                             skipCrds:
+                                                              type: boolean
+                                                            skipSchemaValidation:
                                                               type: boolean
                                                             skipTests:
                                                               type: boolean
@@ -18433,6 +18567,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -18666,6 +18802,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -19051,6 +19189,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -19284,6 +19424,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -19889,6 +20031,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -20122,6 +20266,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -20722,6 +20868,8 @@ cluster:
                                                   type: string
                                                 skipCrds:
                                                   type: boolean
+                                                skipSchemaValidation:
+                                                  type: boolean
                                                 skipTests:
                                                   type: boolean
                                                 valueFiles:
@@ -20955,6 +21103,8 @@ cluster:
                                                   releaseName:
                                                     type: string
                                                   skipCrds:
+                                                    type: boolean
+                                                  skipSchemaValidation:
                                                     type: boolean
                                                   skipTests:
                                                     type: boolean
@@ -21425,6 +21575,8 @@ cluster:
                                         type: string
                                       skipCrds:
                                         type: boolean
+                                      skipSchemaValidation:
+                                        type: boolean
                                       skipTests:
                                         type: boolean
                                       valueFiles:
@@ -21658,6 +21810,8 @@ cluster:
                                         releaseName:
                                           type: string
                                         skipCrds:
+                                          type: boolean
+                                        skipSchemaValidation:
                                           type: boolean
                                         skipTests:
                                           type: boolean
@@ -21920,6 +22074,9 @@ cluster:
                               type: string
                             health:
                               properties:
+                                lastTransitionTime:
+                                  format: date-time
+                                  type: string
                                 message:
                                   type: string
                                 status:
@@ -22764,7 +22921,6 @@ cluster:
           - delete
           - get
           - patch
-          - list
         - apiGroups:
           - ""
           resources:
@@ -22960,6 +23116,8 @@ cluster:
           namespace: argocd
         ---
         apiVersion: v1
+        data:
+          kustomize.buildOptions: --enable-alpha-plugins --enable-exec --enable-helm
         kind: ConfigMap
         metadata:
           labels:
@@ -23788,6 +23946,10 @@ cluster:
               - args:
                 - /usr/local/bin/argocd-repo-server
                 env:
+                - name: XDG_CONFIG_HOME
+                  value: /.config
+                - name: SOPS_AGE_KEY_FILE
+                  value: /.age/keys.txt
                 - name: REDIS_PASSWORD
                   valueFrom:
                     secretKeyRef:
@@ -24021,6 +24183,14 @@ cluster:
                   seccompProfile:
                     type: RuntimeDefault
                 volumeMounts:
+                - mountPath: /usr/local/bin/kustomize
+                  name: custom-tools
+                  subPath: kustomize
+                - mountPath: /usr/local/bin/ksops
+                  name: custom-tools
+                  subPath: ksops
+                - mountPath: /.age
+                  name: sops-age
                 - mountPath: /app/config/ssh
                   name: ssh-known-hosts
                 - mountPath: /app/config/tls
@@ -24038,6 +24208,17 @@ cluster:
                 - mountPath: /home/argocd/cmp-server/plugins
                   name: plugins
               initContainers:
+              - args:
+                - echo "Installing KSOPS..."; mv ksops /custom-tools/; mv kustomize /custom-tools/;
+                  echo "Done.";
+                command:
+                - /bin/sh
+                - -c
+                image: viaductoss/ksops:v4.3.2
+                name: install-ksops
+                volumeMounts:
+                - mountPath: /custom-tools
+                  name: custom-tools
               - command:
                 - /bin/cp
                 - -n
@@ -24061,6 +24242,11 @@ cluster:
                 kubernetes.io/os: linux
               serviceAccountName: argocd-repo-server
               volumes:
+              - emptyDir: {}
+                name: custom-tools
+              - name: sops-age
+                secret:
+                  secretName: sops-age
               - configMap:
                   name: argocd-ssh-known-hosts-cm
                 name: ssh-known-hosts
@@ -24619,6 +24805,12 @@ cluster:
                       key: controller.self.heal.backoff.cap.seconds
                       name: argocd-cmd-params-cm
                       optional: true
+                - name: ARGOCD_APPLICATION_CONTROLLER_SYNC_TIMEOUT
+                  valueFrom:
+                    configMapKeyRef:
+                      key: controller.sync.timeout.seconds
+                      name: argocd-cmd-params-cm
+                      optional: true
                 - name: ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_PLAINTEXT
                   valueFrom:
                     configMapKeyRef:
@@ -24832,6 +25024,7 @@ cluster:
               namespace: argocd
             spec:
               destination:
+                namespace: argocd
                 server: https://kubernetes.default.svc
               ignoreDifferences:
               - jsonPointers:
