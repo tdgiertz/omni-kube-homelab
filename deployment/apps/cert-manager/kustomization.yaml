@@ -1,3 +1,8 @@
+namespace: cert-manager
+
 resources:
-  - cert-manager.yaml
+  - namespace.yaml
   - cert-manager-cluster-issuer.yaml
+
+generators:
+  - helm-chart.yaml
