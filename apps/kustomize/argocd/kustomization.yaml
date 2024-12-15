@@ -8,3 +8,5 @@ resources:
 
 patches:
   - path: argocd-cmd-params-cm.yaml
+  - path: argocd-cm.yaml
+  - path: argo-cd-repo-server-ksops-patch.yaml
