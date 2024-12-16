@@ -1,5 +1,5 @@
 creation_rules:
   - encrypted_regex: "^(data|stringData)$"
-    mac-only-encrypted: true
+    mac_only_encrypted: true
     age: >-
       age1cxfnu9czwc2hlwdjpx29ps4p5gu4tksxl40zff425vctpvpy8edqmu3ryp
