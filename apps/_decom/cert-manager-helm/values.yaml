@@ -1,9 +1,0 @@
- crds:
-  enabled: true
-
-config:
-  enableGatewayAPI: true
-
-global:
-  leaderElection:
-    namespace: cert-manager

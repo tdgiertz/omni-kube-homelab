@@ -1,5 +1,0 @@
-namespace: istio-ingress
-
-resources:
-  - namespace.yaml
-  - istio-gateway.yaml

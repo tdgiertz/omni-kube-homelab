@@ -1,7 +1,0 @@
-resources:
-  - namespace.yaml
-  - cluster-issuer.yaml
-
-generators:
-  - secret-generator.yaml
-  - helm-chart.yaml
