@@ -1,7 +1,6 @@
 namespace: longhorn-system
 
 resources:
-  - minio-secret.yaml
   - https://raw.githubusercontent.com/longhorn/longhorn/v1.7.2/deploy/longhorn.yaml
   - service.yaml
 
@@ -10,3 +9,6 @@ patches:
     target:
       kind: Namespace
   - path: longhorn-default-setting.yaml
+
+generators:
+  - secret-generator.yaml

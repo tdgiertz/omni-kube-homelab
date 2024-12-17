@@ -70,3 +70,8 @@ kustomize build ./nginx > ../argocd/default/nginx/nginx.yaml
 ## postgres
 
 kustomize build ./postgres > ../argocd/default/postgres/postgres.yaml
+
+sops --encrypt --in-place deployment/apps/postgres/secret.enc.yaml
+sops --decrypt deployment/apps/postgres/secret.enc.yaml
+
+cat ~/.config/sops/age/keys.txt | kubectl --kubeconfig ~/kubernetes/talos-homelab-kubeconfig.yaml create secret generic sops-age --namespace=argocd --from-file=keys.txt=/dev/stdin --dry-run=client
