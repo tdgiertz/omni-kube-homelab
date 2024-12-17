@@ -5177,4 +5177,7 @@ spec:
   - backendRefs:
     - name: longhorn-ui-service
       port: 8000
-    matches: null
+    matches:	
+      - path:	
+          type: PathPrefix	
+          value: /

@@ -2078,4 +2078,7 @@ cluster:
           - backendRefs:
             - name: hubble-ui
               port: 80
-            matches: null
+            matches:	
+              - path:	
+                  type: PathPrefix	
+                  value: /

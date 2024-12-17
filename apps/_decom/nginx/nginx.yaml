@@ -52,4 +52,7 @@ spec:
   - backendRefs:
     - name: my-nginx-service
       port: 80
-    matches: null
+    matches:	
+      - path:	
+          type: PathPrefix	
+          value: /
