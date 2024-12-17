@@ -5,7 +5,8 @@ metadata:
   namespace: argocd
 spec:
   parentRefs:
-  - kind: Gateway
+  - roup: gateway.networking.k8s.io
+    kind: Gateway
     name: shared-default-gateway
     namespace: default
     sectionName: shared-https
@@ -17,6 +18,8 @@ spec:
         type: PathPrefix	
         value: /
     backendRefs:
-      - name: argocd-server
+      - group: ''
+        kind: Service
+        name: argocd-server
         port: 80
 ---
