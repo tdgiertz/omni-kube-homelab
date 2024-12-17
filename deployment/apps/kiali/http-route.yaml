@@ -13,6 +13,9 @@ spec:
   - kiali.apps.timgiertz.com
   rules:
   - matches:
+    - path:	
+        type: PathPrefix	
+        value: /
     backendRefs:
     - name: kiali
       port: 20001

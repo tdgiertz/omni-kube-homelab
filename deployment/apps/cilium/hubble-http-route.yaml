@@ -13,6 +13,9 @@ spec:
   - hubble.apps.timgiertz.com
   rules:
   - matches:
+    - path:	
+        type: PathPrefix	
+        value: /
     backendRefs:
     - name: hubble-ui
       port: 80

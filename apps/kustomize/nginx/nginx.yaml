@@ -50,6 +50,9 @@ spec:
   - test.apps.timgiertz.com
   rules:
   - matches:
+    - path:	
+        type: PathPrefix	
+        value: /
     backendRefs:
     - name: my-nginx-service
       port: 80

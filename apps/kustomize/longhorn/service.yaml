@@ -27,6 +27,9 @@ spec:
   - longhorn.apps.timgiertz.com
   rules:
   - matches:
+    - path:	
+        type: PathPrefix	
+        value: /
     backendRefs:
     - name: longhorn-ui-service
       port: 8000
