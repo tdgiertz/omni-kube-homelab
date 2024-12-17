@@ -17,7 +17,7 @@
   - sudo apt update
   - sudo apt install wslu
   - Add export BROWSER=wslview to $HOME/.bashrc
-- talosctl --talosconfig talos-homelab-talosconfig.yaml --nodes \<IP Address> dashboard
+- talosctl --talosconfig talosconfig.yaml --nodes \<IP Address> dashboard
 - omnictl --omniconfig omniconfig.yaml get clusters
 - brew install int128/kubelogin/kubelogin ([use-kubectl-with-omni](https://omni.siderolabs.com/how-to-guides/use-kubectl-with-omni))
 - [ArgoCD Cli](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
