@@ -38,7 +38,8 @@ spec:
         namespaces:
           from: All
         kinds:
-        - kind: TCPRoute
+        - group: gateway.networking.k8s.io
+          kind: TCPRoute
     - name: shared-https
       hostname: "*.apps.timgiertz.com"
       protocol: HTTPS
@@ -87,4 +88,8 @@ spec:
       requestRedirect:
         scheme: https
         statusCode: 301
+    matches:	
+      - path:	
+          type: PathPrefix	
+          value: /
 ---
