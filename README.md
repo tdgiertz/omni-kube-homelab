@@ -35,6 +35,7 @@
 - Create Age key
   - age-keygen -o age.agekey
   - cp age.agekey ~/.config/sops/age/keys.txt
+  - Update public key in .sops.yaml
 - Update the secrets and encrypt
   - Postgres user
   - Minio for Longhorn
@@ -44,6 +45,9 @@ sops --encrypt --in-place secret.enc.yaml
 ```
 - Create Omni self hosted instance
 - Create machine classes in Omni
+```bash
+omnictl apply -f machine-class.yaml
+```
 - Create the cluster
 ```bash
 omnictl cluster template sync --file template.yaml
