@@ -32,7 +32,8 @@ spec:
         namespace: argocd
       syncPolicy:
         automated:
-          prune: false
+          prune: true
+          selfHeal: true
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true
@@ -40,30 +41,61 @@ spec:
           - RespectIgnoreDifferences=true
           - SkipDryRunOnMissingResource=true
         retry:
-          limit: -1 # Infinite retries
+          limit: -1
           backoff:
             duration: 30s
             factor: 2
             maxDuration: 5m
       ignoreDifferences:
-        # Cilium generated certs
-        - name: cilium-ca
-          kind: Secret
-          namespace: kube-system
+        - group: gateway.networking.k8s.io
+          kind: Gateway
+          jqPathExpressions:
+          - .spec.listeners[].allowedRoutes.kinds[].group
+          - .spec.listeners[].tls.certificateRefs[].group
+        - group: apps
+          kind: Deployment
+          jqPathExpressions:
+          - .spec.template.spec.containers[].env[].valueFrom.resourceFieldRef.divisor
+          - .spec.template.spec.initContainers[].env[].valueFrom.resourceFieldRef.divisor
+        - group: apps
+          kind: DaemonSet
+          jqPathExpressions:
+          - .spec.template.spec.containers[].env[].valueFrom.resourceFieldRef.divisor
+          - .spec.template.spec.initContainers[].env[].valueFrom.resourceFieldRef.divisor
+        - group: gateway.networking.k8s.io
+          kind: HTTPRoute
+          jqPathExpressions:
+          - .spec.parentRefs[].group
+          - .spec.rules[].backendRefs[].group
+          - .spec.rules[].backendRefs[].kind
+          - .spec.rules[].backendRefs[].weight
+        - group: gateway.networking.k8s.io
+          kind: TCPRoute
+          jqPathExpressions:
+          - .spec.parentRefs[].group
+          - .spec.rules[].backendRefs[].group
+          - .spec.rules[].backendRefs[].kind
+          - .spec.rules[].backendRefs[].weight
+        - group: admissionregistration.k8s.io
+          kind: ValidatingWebhookConfiguration
+          jqPathExpressions:
+          - .webhooks[].failurePolicy
+        - group: ""
+          kind: ConfigMap
+          name: hubble-ca-cert
           jsonPointers:
-            - /data/ca.crt
-            - /data/ca.key
-        - name: hubble-server-certs
+          - /data/ca.crt
+        - group: ""
           kind: Secret
-          namespace: kube-system
+          name: hubble-relay-client-certs
           jsonPointers:
-            - /data/ca.crt
-            - /data/tls.crt
-            - /data/tls.key
-        - name: hubble-relay-client-certs
+          - /data/ca.crt
+          - /data/tls.crt
+          - /data/tls.key
+        - group: ""
           kind: Secret
-          namespace: kube-system
+          name: hubble-server-certs
           jsonPointers:
-            - /data/ca.crt
-            - /data/tls.crt
-            - /data/tls.key
+          - /data/ca.crt
+          - /data/tls.crt
+          - /data/tls.key
