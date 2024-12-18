@@ -47,35 +47,11 @@ spec:
             factor: 2
             maxDuration: 5m
       ignoreDifferences:
-        - group: gateway.networking.k8s.io
-          kind: Gateway
-          jqPathExpressions:
-          - .spec.listeners[].allowedRoutes.kinds[].group
-          - .spec.listeners[].tls.certificateRefs[].group
         - group: apps
-          kind: Deployment
+          kind: "*"
           jqPathExpressions:
           - .spec.template.spec.containers[].env[].valueFrom.resourceFieldRef.divisor
           - .spec.template.spec.initContainers[].env[].valueFrom.resourceFieldRef.divisor
-        - group: apps
-          kind: DaemonSet
-          jqPathExpressions:
-          - .spec.template.spec.containers[].env[].valueFrom.resourceFieldRef.divisor
-          - .spec.template.spec.initContainers[].env[].valueFrom.resourceFieldRef.divisor
-        - group: gateway.networking.k8s.io
-          kind: HTTPRoute
-          jqPathExpressions:
-          - .spec.parentRefs[].group
-          - .spec.rules[].backendRefs[].group
-          - .spec.rules[].backendRefs[].kind
-          - .spec.rules[].backendRefs[].weight
-        - group: gateway.networking.k8s.io
-          kind: TCPRoute
-          jqPathExpressions:
-          - .spec.parentRefs[].group
-          - .spec.rules[].backendRefs[].group
-          - .spec.rules[].backendRefs[].kind
-          - .spec.rules[].backendRefs[].weight
         - group: admissionregistration.k8s.io
           kind: ValidatingWebhookConfiguration
           jqPathExpressions:
