@@ -24301,15 +24301,6 @@ cluster:
           namespace: argocd
         ---
         apiVersion: v1
-        data:
-          password: dGVtcFBAc3N3b3Jk
-        kind: Secret
-        metadata:
-          name: argocd-initial-admin-secret
-          namespace: argocd
-        type: Opaque
-        ---
-        apiVersion: v1
         kind: Secret
         metadata:
           labels:

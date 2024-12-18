@@ -68,21 +68,25 @@ cp age.agekey ~/.config/sops/age/keys.txt
 ```bash
 sops --encrypt --in-place secret.enc.yaml
 ```
-- Create Omni self hosted instance
-- Create machine classes in Omni
+## Create Omni self hosted instance
+## Create machine classes in Omni
 ```bash
 omnictl apply -f machine-class.yaml
 ```
-- Create the cluster
+## Create the cluster
 ```bash
 omnictl cluster template sync --file template.yaml
 ```
-- Create a secret in Kubernetes with the Age private key
+## Create a secret in Kubernetes with the Age private key
 ```bash
 cat ~/.config/sops/age/keys.txt | kubectl --kubeconfig kubeconfig.yaml create secret generic sops-age --namespace=argocd --from-file=keys.txt=/dev/stdin
 ```
 
-- Get token for Kubernetes Dashboard login
+## Get the initial admin password for ArgoCD
+```bash
+argocd --kubeconfig ./kubeconfig.yaml admin initial-password -n argocd
+```
+## Get token for Kubernetes Dashboard login
 ```bash
 kubectl  --kubeconfig kubeconfig.yaml get secret admin-user -n kubernetes-dashboard -o jsonpath="{.data.token}" | base64 -d
 ```
