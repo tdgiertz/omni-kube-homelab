@@ -5,7 +5,8 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   parentRefs:
-  - kind: Gateway
+  - group: gateway.networking.k8s.io
+    kind: Gateway
     name: shared-default-gateway
     namespace: default
     sectionName: shared-https
@@ -23,8 +24,11 @@ spec:
         type: PathPrefix
         value: /api/v1/me
     backendRefs:
-    - name: kubernetes-dashboard-auth
+    - group: ''
+      kind: Service
+      name: kubernetes-dashboard-auth
       port: 8000
+      weight: 1
   - matches:
     - path:
         type: PathPrefix
@@ -33,12 +37,18 @@ spec:
         type: PathPrefix
         value: /metrics
     backendRefs:
-    - name: kubernetes-dashboard-api
+    - group: ''
+      kind: Service
+      name: kubernetes-dashboard-api
       port: 8000
+      weight: 1
   - matches:
     - path:
         type: PathPrefix
         value: /
     backendRefs:
-    - name: kubernetes-dashboard-web
+    - ngroup: ''
+      kind: Service
+      name: kubernetes-dashboard-web
       port: 8000
+      weight: 1

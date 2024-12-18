@@ -5,7 +5,8 @@ metadata:
   namespace: istio-system
 spec:
   parentRefs:
-  - kind: Gateway
+  - group: gateway.networking.k8s.io
+    kind: Gateway
     name: shared-default-gateway
     namespace: default
     sectionName: shared-https
@@ -17,6 +18,9 @@ spec:
         type: PathPrefix	
         value: /
     backendRefs:
-    - name: kiali
+    - group: ''
+      kind: Service
+      name: kiali
       port: 20001
+      weight: 1
 ---

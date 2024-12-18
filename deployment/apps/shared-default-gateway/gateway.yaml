@@ -77,7 +77,8 @@ metadata:
     https-upgrade: "true"
 spec:
   parentRefs:
-  - namespace: default
+  - group: gateway.networking.k8s.io
+    namespace: default
     name: shared-default-gateway
     kind: Gateway
     sectionName: shared-http
