@@ -55,7 +55,7 @@ spec:
         type: PathPrefix	
         value: /
     backendRefs:
-    - ngroup: ''
+    - group: ''
       kind: Service
       name: my-nginx-service
       port: 80
