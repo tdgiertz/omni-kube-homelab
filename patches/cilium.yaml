@@ -2070,15 +2070,19 @@ cluster:
           hostnames:
           - hubble.apps.timgiertz.com
           parentRefs:
-          - kind: Gateway
+          - group: gateway.networking.k8s.io
+            kind: Gateway
             name: shared-default-gateway
             namespace: default
             sectionName: shared-https
           rules:
           - backendRefs:
-            - name: hubble-ui
+            - group: ""
+              kind: Service
+              name: hubble-ui
               port: 80
-            matches:	
-              - path:	
-                  type: PathPrefix	
-                  value: /
+              weight: 1
+            matches:
+            - path:
+                type: PathPrefix
+                value: /
