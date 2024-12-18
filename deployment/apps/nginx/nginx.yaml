@@ -21,8 +21,8 @@ spec:
         - containerPort: 80
         resources:
           limits:
-            - cpu: "500m"
-              memory: "2Gi"
+            cpu: "500m"
+            memory: "2Gi"
       securityContext:
         runAsNonRoot: false
 ---
