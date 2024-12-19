@@ -28,9 +28,9 @@ spec:
         args:
           - "echo \"{ \\\"nodeName\\\": \\\"${NODE_NAME}\\\", \\\"podName\\\": \\\"${POD_NAME}\\\" }\" > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"
         resources:
-          limits:
+          requests:
             cpu: "100m"
             memory: "256Mi"
-          requests:
+          limits:
             cpu: "1000m"
             memory: "1Gi"
