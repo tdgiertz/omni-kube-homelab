@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-identifier-service
+  namespace: node-identifier
+spec:
+  selector:
+    app: node-identifier-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
