@@ -17,8 +17,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 spec:
   minAvailable: 1
   selector:
@@ -40,8 +40,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 ---
 # Source: istiod/templates/configmap.yaml
 apiVersion: v1
@@ -58,8 +58,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 data:
 
   # Configuration file for the mesh networks to be used by the Split Horizon EDS.
@@ -95,8 +95,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 data:
 
   values: |-
@@ -190,7 +190,7 @@ data:
         "sts": {
           "servicePort": 0
         },
-        "tag": "1.24.0",
+        "tag": "1.24.2",
         "variant": "distroless",
         "waypoint": {
           "affinity": {},
@@ -2081,8 +2081,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 rules:
   # sidecar injection controller
   - apiGroups: ["admissionregistration.k8s.io"]
@@ -2198,8 +2198,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 rules:
   - apiGroups: ["apps"]
     verbs: [ "get", "watch", "list", "update", "patch", "create", "delete" ]
@@ -2223,8 +2223,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 rules:
   - apiGroups:
       - "config.istio.io"
@@ -2280,8 +2280,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -2303,8 +2303,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -2326,8 +2326,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -2351,8 +2351,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 rules:
 # permissions to verify the webhook is ready and rejecting
 # invalid config. We use --server-dry-run so no config is persisted.
@@ -2390,8 +2390,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -2419,8 +2419,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 spec:
   ports:
     - port: 15010
@@ -2460,8 +2460,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 spec:
   strategy:
     rollingUpdate:
@@ -2484,8 +2484,8 @@ spec:
         app.kubernetes.io/managed-by: "Helm"
         app.kubernetes.io/instance: "istiod"
         app.kubernetes.io/part-of: "istio"
-        app.kubernetes.io/version: "1.24.0"
-        helm.sh/chart: istiod-1.24.0
+        app.kubernetes.io/version: "1.24.2"
+        helm.sh/chart: istiod-1.24.2
       annotations:
         prometheus.io/port: "15014"
         prometheus.io/scrape: "true"
@@ -2497,7 +2497,7 @@ spec:
       serviceAccountName: istiod
       containers:
         - name: discovery
-          image: "docker.io/istio/pilot:1.24.0-distroless"
+          image: "docker.io/istio/pilot:1.24.2-distroless"
           args:
           - "discovery"
           - --monitoringAddr=:15014
@@ -2661,8 +2661,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 spec:
   maxReplicas: 5
   minReplicas: 1
@@ -2717,8 +2717,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 webhooks:
 - name: rev.namespace.sidecar-injector.istio.io
   clientConfig:
@@ -2856,8 +2856,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istiod"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: istiod-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: istiod-1.24.2
 webhooks:
   # Webhook handling per-revision validation. Mostly here so we can determine whether webhooks
   # are rejecting invalid configs on a per-revision basis.

@@ -1,5 +1,0 @@
-namespace: kube-system
-
-resources:
-  - cilium-bgp.yaml
-  - hubble-http-route.yaml

@@ -16,8 +16,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istio-base"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: base-1.24.2
 ---
 # Source: base/templates/crds.yaml
 # TODO enableCRDTemplates is now defaulted to true as we
@@ -36,8 +36,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: wasmplugins.extensions.istio.io
 spec:
   group: extensions.istio.io
@@ -408,8 +408,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: destinationrules.networking.istio.io
 spec:
   group: networking.istio.io
@@ -6191,8 +6191,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: envoyfilters.networking.istio.io
 spec:
   group: networking.istio.io
@@ -6601,8 +6601,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: gateways.networking.istio.io
 spec:
   group: networking.istio.io
@@ -7320,8 +7320,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: proxyconfigs.networking.istio.io
 spec:
   group: networking.istio.io
@@ -7474,8 +7474,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: serviceentries.networking.istio.io
 spec:
   group: networking.istio.io
@@ -8385,8 +8385,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: sidecars.networking.istio.io
 spec:
   group: networking.istio.io
@@ -10029,8 +10029,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: virtualservices.networking.istio.io
 spec:
   group: networking.istio.io
@@ -13169,8 +13169,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: workloadentries.networking.istio.io
 spec:
   group: networking.istio.io
@@ -13667,8 +13667,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: workloadgroups.networking.istio.io
 spec:
   group: networking.istio.io
@@ -14557,8 +14557,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: authorizationpolicies.security.istio.io
 spec:
   group: security.istio.io
@@ -15295,8 +15295,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: peerauthentications.security.istio.io
 spec:
   group: security.istio.io
@@ -15645,8 +15645,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: requestauthentications.security.istio.io
 spec:
   group: security.istio.io
@@ -16251,8 +16251,8 @@ metadata:
     app.kubernetes.io/instance: istio-base
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/part-of: istio
-    app.kubernetes.io/version: 1.24.0
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: 1.24.2
+    helm.sh/chart: base-1.24.2
   name: telemetries.telemetry.istio.io
 spec:
   group: telemetry.istio.io
@@ -17182,8 +17182,8 @@ metadata:
     app.kubernetes.io/managed-by: "Helm"
     app.kubernetes.io/instance: "istio-base"
     app.kubernetes.io/part-of: "istio"
-    app.kubernetes.io/version: "1.24.0"
-    helm.sh/chart: base-1.24.0
+    app.kubernetes.io/version: "1.24.2"
+    helm.sh/chart: base-1.24.2
 webhooks:
   - name: validation.istio.io
     clientConfig:
