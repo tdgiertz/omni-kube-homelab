@@ -1,8 +1,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hubble-system-http
-  namespace: kube-system
+  name: argocd-http-app
+  namespace: argocd
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
@@ -11,15 +11,16 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - hubble.{subdomain}
+  - argocd.{subdomain}
   rules:
   - matches:
     - path:	
         type: PathPrefix	
         value: /
     backendRefs:
-    - group: ''
-      kind: Service
-      name: hubble-ui
-      port: 80
-      weight: 1
+      - group: ''
+        kind: Service
+        name: argocd-server
+        port: 80
+        weight: 1
+---

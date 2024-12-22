@@ -1,0 +1,40 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cluster-example-initdb
+spec:
+  instances: 3
+  superuserSecret:
+    name: superuser-secret
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: app-secret
+  storage:
+    storageClass: longhorn-postgres-storage
+    size: 2Gi
+  walStorage:
+    storageClass: longhorn-postgres-storage
+    size: 2Gi
+---
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TCPRoute
+metadata:
+  name: postgres-system-tcp
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: shared-default-gateway
+    namespace: default
+    sectionName: shared-tcp
+  rules:
+    - backendRefs:
+      - group: ''
+        kind: Service
+        name: cluster-example-initdb-rw
+        port: 5432
+        weight: 1
+---

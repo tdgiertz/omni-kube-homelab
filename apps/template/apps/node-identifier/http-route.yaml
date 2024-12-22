@@ -1,8 +1,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hubble-system-http
-  namespace: kube-system
+  name: node-identifier-app-http
+  namespace: node-identifier
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
@@ -11,7 +11,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - hubble.{subdomain}
+  - id.{subdomain}
   rules:
   - matches:
     - path:	
@@ -20,6 +20,6 @@ spec:
     backendRefs:
     - group: ''
       kind: Service
-      name: hubble-ui
+      name: node-identifier-service
       port: 80
       weight: 1

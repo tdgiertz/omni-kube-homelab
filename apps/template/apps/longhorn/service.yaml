@@ -1,8 +1,22 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: longhorn-ui-service
+  namespace: longhorn-system
+spec:
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
+  selector:
+    app: longhorn-ui
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hubble-system-http
-  namespace: kube-system
+  name: longhorn-system-http
+  namespace: longhorn-system
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
@@ -11,7 +25,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - hubble.{subdomain}
+  - longhorn.{subdomain}
   rules:
   - matches:
     - path:	
@@ -20,6 +34,7 @@ spec:
     backendRefs:
     - group: ''
       kind: Service
-      name: hubble-ui
-      port: 80
+      name: longhorn-ui-service
+      port: 8000
       weight: 1
+---

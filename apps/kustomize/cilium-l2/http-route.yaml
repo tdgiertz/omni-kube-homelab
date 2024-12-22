@@ -11,7 +11,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - hubble.apps.timgiertz.com
+  - hubble.{subdomain}
   rules:
   - matches:
     - path:	

@@ -1,0 +1,4 @@
+namespace: argocd
+
+resources:
+  - http-route.yaml
