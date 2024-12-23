@@ -1,9 +1,0 @@
-namespace: istio-system
-
-resources:
-  - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/experimental-install.yaml
-  - namespace.yaml
-  - istio-base.yaml
-  - istio-control-plane.yaml
-  - istio-cni.yaml
-  - istio-ztunnel.yaml

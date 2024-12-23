@@ -1,8 +1,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: hubble-system-http
-  namespace: kube-system
+  name: kiali-http-app
+  namespace: istio-system
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
@@ -11,7 +11,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - hubble.{{ subdomain }}
+  - kiali.{{ .Values.subdomain }}
   rules:
   - matches:
     - path:	
@@ -20,6 +20,7 @@ spec:
     backendRefs:
     - group: ''
       kind: Service
-      name: hubble-ui
-      port: 80
+      name: kiali
+      port: 20001
       weight: 1
+---

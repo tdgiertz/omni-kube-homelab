@@ -11,7 +11,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - hubble.{subdomain}
+  - hubble.{{ subdomain }}
   rules:
   - matches:
     - path:	
