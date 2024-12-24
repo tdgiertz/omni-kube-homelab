@@ -2,8 +2,6 @@ helm repo add cilium https://helm.cilium.io/
 helm repo add istio https://istio-release.storage.googleapis.com/charts
 helm repo update
 
-kustomize build ./argocd | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="argocd"); .contents=load_str("/dev/stdin"))' ../../patches/argocd.yaml
-
 helm template \
     cilium \
     cilium/cilium \
@@ -24,8 +22,6 @@ helm template \
     --set=hubble.relay.enabled=true \
     --set=hubble.ui.enabled=true \
     --set=cni.exclusive=false > cilium-bgp/install-cilium.yaml
-
-# kustomize build ./cilium-bgp | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="kube-system"); .contents=load_str("/dev/stdin"))' ../../patches/cilium.yaml
 
 helm template \
     cilium \
@@ -49,8 +45,6 @@ helm template \
     --set=hubble.relay.enabled=true \
     --set=hubble.ui.enabled=true \
     --set=cni.exclusive=false > cilium-l2/install-cilium.yaml
-
-kustomize build ./cilium-l2 | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="kube-system"); .contents=load_str("/dev/stdin"))' ../../patches/cilium.yaml
 
 helm template istio-base istio/base -n istio-system --create-namespace > ../../deployment/apps/istio/istio-base.yaml
 helm template istiod istio/istiod -n istio-system --set profile=ambient --set pilot.env.PILOT_ENABLE_ALPHA_GATEWAY_API=true > ../../deployment/apps/istio/istio-control-plane.yaml

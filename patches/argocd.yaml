@@ -26189,6 +26189,32 @@ cluster:
                 - RespectIgnoreDifferences=true
                 - SkipDryRunOnMissingResource=true
         ---
+        apiVersion: gateway.networking.k8s.io/v1
+        kind: HTTPRoute
+        metadata:
+          name: argocd-http-app
+          namespace: argocd
+        spec:
+          hostnames:
+          - argocd.apps.example.com
+          parentRefs:
+          - group: gateway.networking.k8s.io
+            kind: Gateway
+            name: shared-default-gateway
+            namespace: default
+            sectionName: shared-https
+          rules:
+          - backendRefs:
+            - group: ""
+              kind: Service
+              name: argocd-server
+              port: 80
+              weight: 1
+            matches:
+            - path:
+                type: PathPrefix
+                value: /
+        ---
         apiVersion: networking.k8s.io/v1
         kind: NetworkPolicy
         metadata:

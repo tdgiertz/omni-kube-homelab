@@ -23,6 +23,8 @@ patches:
     file: patches/extraManifests.yaml
   - name: cilium
     file: patches/cilium.yaml
+  - name: istio
+    file: patches/istio.yaml
   - name: metric-server
     file: patches/metrics-server.yaml
   - name: argocd
