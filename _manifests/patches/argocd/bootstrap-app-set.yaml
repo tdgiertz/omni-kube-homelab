@@ -10,11 +10,13 @@ spec:
           - list:
               elements:
                 - repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
-                  revision: HEAD
+                  # revision: HEAD
                   repoPath: "deployment/*/*"
+                  branch: apply-config-test
           - git:
               repoURL: '{{repoURL}}'
-              revision: '{{revision}}'
+              # revision: '{{revision}}'
+              targetRevision: '{{branch}}'
               directories:
                 - path: '{{repoPath}}'
   template:
@@ -25,7 +27,7 @@ spec:
       project: '{{path[1]}}'
       source:
         repoURL: '{{repoURL}}'
-        targetRevision: '{{revision}}'
+        targetRevision: '{{targetRevision}}'
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc

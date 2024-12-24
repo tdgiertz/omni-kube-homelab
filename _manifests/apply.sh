@@ -9,14 +9,14 @@ apps_dir="$deployment_dir/apps"
 templates_dir="$deployment_dir/templates"
 helm_values=./apps/helm/values.yaml
 
-mkdir -p "$templates_dir"
+mkdir -p "$templates_dir/apps"
 
 if [ -d "$apps_dir" ]; then
     rm -r "$apps_dir"
 fi
 
 echo "Creating apps directory"
-cp -r apps/helm "$templates_dir"
+cp -r apps/kustomize/* "$templates_dir/apps"
 
 helm template --no-hooks --name-template 'deployment' -f $helm_values ./apps/helm --output-dir "$output_dir"
 

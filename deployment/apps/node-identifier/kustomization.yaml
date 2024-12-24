@@ -1,0 +1,7 @@
+namespace: node-identifier
+
+resources:
+  - namespace.yaml
+  - daemon-set.yaml
+  - service.yaml
+  - http-route.yaml

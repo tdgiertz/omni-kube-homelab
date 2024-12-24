@@ -1,0 +1,23 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: longhorn-default-setting
+  namespace: longhorn-system
+  labels:
+    app.kubernetes.io/name: longhorn
+    app.kubernetes.io/instance: longhorn
+    app.kubernetes.io/version: v1.7.2
+data:
+  default-setting.yaml: |-
+    backup-target: s3://longhorn@us-central/
+    backup-target-credential-secret: s3-store-secret
+    priority-class: longhorn-critical
+    disable-revision-counter: true
+    default-data-path: /var/mnt/longhorn/
+    default-replica-count: 2
+    default-data-locality: best-effort
+    orphan-auto-deletion: false
+    auto-delete-pod-when-volume-detached-unexpectedly: true
+    node-down-pod-deletion-policy: delete-both-statefulset-and-deployment-pod
+    node-drain-policy: always-allow

@@ -1,8 +1,7 @@
-# istio-base
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: istio-system
+  name: longhorn-system
   labels:
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/enforce-version: latest
