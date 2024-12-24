@@ -3,10 +3,6 @@ metadata:
     type: MachineClasses.omni.sidero.dev
     id: controller-node
     version: 1
-    owner:
-    phase: running
-    created: 2024-10-29T17:42:40Z
-    updated: 1970-01-01T00:00:00Z
 spec:
     matchlabels:
         - omni.sidero.dev/mem = 8GiB
@@ -17,10 +13,6 @@ metadata:
     type: MachineClasses.omni.sidero.dev
     id: worker-node-nvme
     version: 2
-    owner:
-    phase: running
-    created: 2024-11-16T01:40:09Z
-    updated: 2024-11-16T01:53:41Z
 spec:
     matchlabels:
         - omni.sidero.dev/mem >= 16GiB,nvme
@@ -31,10 +23,6 @@ metadata:
     type: MachineClasses.omni.sidero.dev
     id: worker-node-sdb
     version: 2
-    owner:
-    phase: running
-    created: 2024-11-16T01:39:46Z
-    updated: 2024-11-16T01:53:33Z
 spec:
     matchlabels:
         - omni.sidero.dev/mem >= 16GiB,sdb
