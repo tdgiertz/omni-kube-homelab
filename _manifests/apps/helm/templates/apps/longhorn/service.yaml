@@ -25,7 +25,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - longhorn.{{ subdomain }}
+  - longhorn.{{ .Values.subdomain }}
   rules:
   - matches:
     - path:	
