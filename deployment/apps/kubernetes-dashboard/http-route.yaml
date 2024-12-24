@@ -1,3 +1,5 @@
+---
+# Source: deployment/templates/apps/kubernetes-dashboard/http-route.yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:

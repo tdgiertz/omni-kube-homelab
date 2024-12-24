@@ -1,0 +1,96 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: apps-domain-tls
+  namespace: default
+spec:
+  duration: 2160h0m0s # 90d
+  renewBefore: 360h0m0s # 15d
+  issuerRef:
+    name: domain-cert-issuer
+    kind: ClusterIssuer
+  commonName: "*.{{ .Values.subdomain }}"
+  dnsNames:
+    - "*.{{ .Values.subdomain }}"
+  secretName: apps-domain-tls
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: shared-default-gateway
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: domain-cert-issuer
+spec:
+  gatewayClassName: istio
+  listeners:
+    - name: shared-http
+      hostname: "*.{{ .Values.subdomain }}"
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: shared-tcp
+      protocol: TCP
+      port: 5432
+      allowedRoutes:
+        namespaces:
+          from: All
+        kinds:
+        - group: gateway.networking.k8s.io
+          kind: TCPRoute
+    - name: shared-https
+      hostname: "*.{{ .Values.subdomain }}"
+      protocol: HTTPS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        certificateRefs:
+        - group: ''
+          kind: Secret
+          name: apps-domain-tls
+    - name: shared-tls
+      hostname: "*.{{ .Values.subdomain }}"
+      protocol: TLS
+      port: 443
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Passthrough
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: https-upgrade
+---
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: https-upgrade
+  namespace: default
+  labels:
+    https-upgrade: "true"
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    namespace: default
+    name: shared-default-gateway
+    kind: Gateway
+    sectionName: shared-http
+  hostnames:
+    - "*.{{ .Values.subdomain }}"
+  rules:
+  - filters:
+    - type: RequestRedirect
+      requestRedirect:
+        scheme: https
+        statusCode: 301
+    matches:	
+      - path:	
+          type: PathPrefix	
+          value: /
+---

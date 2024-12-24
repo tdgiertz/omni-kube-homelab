@@ -1,0 +1,7 @@
+namespace: kubernetes-dashboard
+
+resources:
+  - namespace.yaml
+  - dashboard.yaml
+  - http-route.yaml
+  - user-account.yaml

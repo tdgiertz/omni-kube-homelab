@@ -1,0 +1,10 @@
+# https://github.com/istio/istio/tree/release-1.24/samples/addons
+resources:
+  - prometheus.yaml
+  - grafana.yaml
+  - jaeger.yaml
+  - loki.yaml
+  - namespace.yaml
+  - kiali-crds.yaml
+  - kiali-operator.yaml
+  - http-route.yaml
