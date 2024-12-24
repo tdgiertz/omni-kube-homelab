@@ -10,4 +10,4 @@ This folder contains all of the manifests for apps that are watched by ArgoCD an
 
 ### [Patches](patches)
 
-This folder contains all of the manifests that create patches used in the Omni template.yaml for cluster creation. The projects in the directory are combined with each matching chart under the helm folder using the same [values yaml](apps/helm/values.yaml) for the apps. The [cilium-bgp](patches/cilium-bgp) and [cilium-l2](patches/cilium-l2) are mutually exclusive. The project is selected via the use_cilium_bgp variable within [apply.sh](apply.sh).
+This folder contains all of the manifests that create patches used in the Omni template.yaml for cluster creation. The projects in the directory are combined with each matching chart under the helm folder using the same [values yaml](apps/helm/values.yaml) for the apps. The [cilium-bgp](patches/kustomize/cilium-bgp) and [cilium-l2](patches/kustomize/cilium-l2) are mutually exclusive. The project is selected via the use_cilium_bgp variable within [apply.sh](apply.sh).
