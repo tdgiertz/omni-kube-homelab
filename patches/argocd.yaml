@@ -26122,14 +26122,14 @@ cluster:
               generators:
               - list:
                   elements:
-                  - repoPath: deployment/*/*
+                  - branch: main
+                    repoPath: deployment/*/*
                     repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
-                    revision: HEAD
               - git:
                   directories:
                   - path: '{{repoPath}}'
                   repoURL: '{{repoURL}}'
-                  revision: '{{revision}}'
+                  revision: '{{branch}}'
           template:
             metadata:
               name: '{{path[2]}}'
@@ -26171,7 +26171,7 @@ cluster:
               source:
                 path: '{{path}}'
                 repoURL: '{{repoURL}}'
-                targetRevision: '{{revision}}'
+                targetRevision: '{{branch}}'
               syncPolicy:
                 automated:
                   prune: true
