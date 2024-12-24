@@ -2079,7 +2079,7 @@ cluster:
           namespace: kube-system
         spec:
           hostnames:
-          - hubble.{{ subdomain }}
+          - hubble.apps.timgiertz.com
           parentRefs:
           - group: gateway.networking.k8s.io
             kind: Gateway

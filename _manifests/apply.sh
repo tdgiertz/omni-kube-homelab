@@ -28,27 +28,31 @@ sops --encrypt --in-place "$apps_dir/cert-manager/secret.enc.yaml"
 sops --encrypt --in-place "$apps_dir/longhorn/secret.enc.yaml"
 sops --encrypt --in-place "$apps_dir/postgres/secret.enc.yaml"
 
-echo "Creating cilium patch"
-if [ use_cilium_bgp ]; then
-    kustomize build ./patches/cilium-bgp | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="kube-system"); .contents=load_str("/dev/stdin"))' ../patches/cilium.yaml
-else
-    kustomize build ./patches/cilium-l2 | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="kube-system"); .contents=load_str("/dev/stdin"))' ../patches/cilium.yaml
-fi
+templateAndBuild() {
+	helm template --no-hooks --name-template "$1" -f $helm_values ./patches/templates/$2 --output-dir "$temp_dir"
+	mv $templates_dir/* $3
+	rm -r "$templates_dir"
+	cp -r patches/$2/* $3
+	kustomize build $3 | yq -i "with(.cluster.inlineManifests.[] | select(.name==\"$4\"); .contents=load_str(\"/dev/stdin\"))" ../patches/$5
+}
 
 temp_dir="patches/.tmp"
-argocd="$temp_dir/argocd/"
-templates_dir="$argocd/templates"
+argocd_dir="$temp_dir/argocd/"
+templates_dir="$argocd_dir/templates"
 
 echo "Creating argocd patch"
-helm template --no-hooks --name-template 'argocd' -f $helm_values ./patches/templates/argocd --output-dir "$temp_dir"
+templateAndBuild "argocd" "argocd" $argocd_dir "argocd" "argocd.yaml"
 
-mv $templates_dir/* $argocd
+cilium_dir="$temp_dir/cilium"
+cilium_folder="cilium_l2"
+templates_dir="$cilium_dir/templates"
 
-rm -r "$templates_dir"
+echo "Creating cilium patch"
+if [ use_cilium_bgp ]; then
+    cilium_folder="cilium-bgp"
+fi
 
-cp -r patches/argocd/* $argocd
-
-kustomize build $argocd | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="argocd"); .contents=load_str("/dev/stdin"))' ../patches/argocd.yaml
+templateAndBuild "cilium" $cilium_folder $cilium_dir "kube-system" "cilium.yaml"
 
 rm -r $temp_dir
 
