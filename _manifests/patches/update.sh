@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+cd "$(dirname "$0")"
+
 helm repo add cilium https://helm.cilium.io/
 helm repo add istio https://istio-release.storage.googleapis.com/charts
 helm repo update
@@ -46,8 +50,8 @@ helm template \
     --set=hubble.ui.enabled=true \
     --set=cni.exclusive=false > cilium-l2/install-cilium.yaml
 
-helm template istio-base istio/base -n istio-system --create-namespace > ../../deployment/apps/istio/istio-base.yaml
-helm template istiod istio/istiod -n istio-system --set profile=ambient --set pilot.env.PILOT_ENABLE_ALPHA_GATEWAY_API=true > ../../deployment/apps/istio/istio-control-plane.yaml
-helm template istio-cni istio/cni -n istio-system --set profile=ambient > ../../deployment/apps/istio/istio-cni.yaml
-helm template ztunnel istio/ztunnel -n istio-system > ../../deployment/apps/istio/istio-ztunnel.yaml
-helm template istio-ingress istio/gateway -n istio-ingress --create-namespace  > ../../deployment/apps/istio/istio-gateway.yaml
+helm template istio-base istio/base -n istio-system --create-namespace > istio/istio-base.yaml
+helm template istiod istio/istiod -n istio-system --set profile=ambient --set pilot.env.PILOT_ENABLE_ALPHA_GATEWAY_API=true > istio/istio-control-plane.yaml
+helm template istio-cni istio/cni -n istio-system --set profile=ambient > istio/istio-cni.yaml
+helm template ztunnel istio/ztunnel -n istio-system > istio/istio-ztunnel.yaml
+helm template istio-ingress istio/gateway -n istio-ingress --create-namespace  > istio/istio-gateway.yaml

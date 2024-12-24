@@ -54,39 +54,39 @@ brew install sops
 brew install helm
 ```
 
-# Setup
-## Create Age key
+# Configuration & cluster setup
+### - Create Age key
 ```bash
 age-keygen -o age.agekey
 cp age.agekey ~/.config/sops/age/keys.txt
 ```
-### Replace public key in .sops.yaml
-## Update the secrets and encrypt
-  - Postgres user
-  - Minio for Longhorn
-  - Cert-Manager issuer and api token
+#### -- Note: replace public key in .sops.yaml
+### - Set the values in the [values.yaml](_manifests/apps/helm/values.yaml)
+### - Run apply.sh
 ```bash
-sops --encrypt --in-place secret.enc.yaml
+chmod u+x _manifests/apply.sh
+./_manifests/apply.sh
 ```
-## Create Omni self hosted instance
-## Create machine classes in Omni
+### - Commit the files created in the [deployment](deployment) folder to git for use in the [ArgoCD bootstrap]( _manifests/patches/helm/argocd/templates/bootstrap-app-set.yaml)
+### - Create Omni self hosted instance
+### - Create machine classes in Omni
 ```bash
 omnictl apply -f machine-class.yaml
 ```
-## Create the cluster
+### - Create the cluster
 ```bash
 omnictl cluster template sync --file template.yaml
 ```
-## Create a secret in Kubernetes with the Age private key
+### - Create a secret in Kubernetes with the Age private key once node have passed the booting state
 ```bash
 cat ~/.config/sops/age/keys.txt | kubectl --kubeconfig kubeconfig.yaml create secret generic sops-age --namespace=argocd --from-file=keys.txt=/dev/stdin
 ```
 
-## Get the initial admin password for ArgoCD
+### - Get the initial admin password for ArgoCD
 ```bash
 argocd --kubeconfig ./kubeconfig.yaml admin initial-password -n argocd
 ```
-## Get token for Kubernetes Dashboard login
+### - Get token for Kubernetes Dashboard login
 ```bash
 kubectl  --kubeconfig kubeconfig.yaml get secret admin-user -n kubernetes-dashboard -o jsonpath="{.data.token}" | base64 -d
 ```

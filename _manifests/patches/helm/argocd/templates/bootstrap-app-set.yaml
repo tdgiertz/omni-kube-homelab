@@ -9,24 +9,24 @@ spec:
         generators:
           - list:
               elements:
-                - repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
-                  repoPath: "deployment/*/*"
-                  branch: main
+                - repoURL: {{ .Values.argocd.bootstrap.repoURL }}
+                  repoPath: {{ .Values.argocd.bootstrap.repoPath }}
+                  branch: {{ .Values.argocd.bootstrap.branch }}
           - git:
-              repoURL: '{{repoURL}}'
-              revision: '{{branch}}'
+              repoURL: '{{`{{repoURL}}`}}'
+              revision: '{{`{{branch}}`}}'
               directories:
-                - path: '{{repoPath}}'
+                - path: '{{`{{repoPath}}`}}'
   template:
     metadata:
-      name: '{{path[2]}}'
+      name: '{{`{{path[2]}}`}}'
       namespace: argocd
     spec:
-      project: '{{path[1]}}'
+      project: '{{`{{path[1]}}`}}'
       source:
-        repoURL: '{{repoURL}}'
-        targetRevision: '{{branch}}'
-        path: '{{path}}'
+        repoURL: '{{`{{repoURL}}`}}'
+        targetRevision: '{{`{{branch}}`}}'
+        path: '{{`{{path}}`}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
