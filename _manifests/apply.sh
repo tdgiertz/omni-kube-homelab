@@ -29,7 +29,7 @@ sops --encrypt --in-place "$apps_dir/longhorn/secret.enc.yaml"
 sops --encrypt --in-place "$apps_dir/postgres/secret.enc.yaml"
 
 templateAndBuild() {
-	helm template --no-hooks --name-template "$1" -f $helm_values ./patches/templates/$2 --output-dir "$temp_dir"
+	helm template --no-hooks --name-template "$1" -f $helm_values ./patches/helm/$2 --output-dir "$temp_dir"
 	mv $templates_dir/* $3
 	rm -r "$templates_dir"
 	cp -r patches/$2/* $3
