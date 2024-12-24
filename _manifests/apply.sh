@@ -16,7 +16,7 @@ if [ -d "$apps_dir" ]; then
 fi
 
 echo "Creating apps directory"
-cp -r apps "$templates_dir"
+cp -r apps/helm "$templates_dir"
 
 helm template --no-hooks --name-template 'deployment' -f $helm_values ./apps/helm --output-dir "$output_dir"
 

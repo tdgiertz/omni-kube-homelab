@@ -26196,7 +26196,7 @@ cluster:
           namespace: argocd
         spec:
           hostnames:
-          - argocd.apps.example.com
+          - argocd.apps.timgiertz.com
           parentRefs:
           - group: gateway.networking.k8s.io
             kind: Gateway
