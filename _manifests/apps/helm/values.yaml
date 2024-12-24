@@ -16,3 +16,9 @@ postgres:
   secret:
     username: --replace with username --
     password: --replace with password --
+
+argocd:
+  bootstrap:
+    repoURL: https://github.com/--replace--/omni-kube-homelab.git
+    repoPath: "deployment/*/*"
+    branch: main
