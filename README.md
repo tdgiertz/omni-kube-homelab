@@ -81,12 +81,12 @@ brew install helm
 # Folder structure (also see [here](_manifests/README.md))
 ```sh
 📁 _manifests        # All manifests used by the cluster through apps and patches
-├──📁 apps           # Manifests in subdirectories are combined and deployed as apps through ArgoCD
-│  ├──📁 helm        # Partial set of manifests run through helm template and moved to the deployment folder
-│  └──📁 kustomize   # Static partial set of manifests moved to the deployment folder
-├──📁 patches        # Manifests in subdirectories are combined and deployed as patches with the cluster creation
-│  ├──📁 helm        # Partial set of manifests run through helm template and moved to a tmp folder
-│  └──📁 kustomize   # Static partial set of manifests moved to a tmp folder
+├──📁 apps           # Manifests in subdirectories are combined and and stored in the deployment folder
+│  ├──📁 helm        # Partial set of manifests run through helm template to apply variables
+│  └──📁 kustomize   # Static partial set of manifests
+├──📁 patches        # Manifests in subdirectories are combined and stored in the patches folder
+│  ├──📁 helm        # Partial set of manifests run through helm template to apply variables
+│  └──📁 kustomize   # Static partial set of manifests
 📁 deployment        # Directory watched by ArgoCD to deploy applications
 📁 patches           # Patches applied though Omni to the cluster
 ```
