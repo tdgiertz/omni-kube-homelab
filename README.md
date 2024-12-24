@@ -78,6 +78,19 @@ brew install helm
 - [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 - node-identifier - App for testing the configuration and load balancing. It returns the node and pod name (on which the request was handled) formatted as JSON.
 
+# Folder structure (also see [here](_manifests/README.md))
+```sh
+📁 _manifests        # All manifests used by the cluster through apps and patches
+├──📁 apps           # Manifests in subdirectories are combined and deployed as apps through ArgoCD
+│  ├──📁 helm        # Partial set of manifests run through helm template and moved to the deployment folder
+│  └──📁 kustomize   # Static partial set of manifests moved to the deployment folder
+├──📁 patches        # Manifests in subdirectories are combined and deployed as patches with the cluster creation
+│  ├──📁 helm        # Partial set of manifests run through helm template and moved to a tmp folder
+│  └──📁 kustomize   # Static partial set of manifests moved to a tmp folder
+📁 deployment        # Directory watched by ArgoCD to deploy applications
+📁 patches           # Patches applied though Omni to the cluster
+```
+
 # Configuration & cluster setup
 Create the Age key for use with [ksops](https://github.com/viaduct-ai/kustomize-sops) (Note: replace public key in .sops.yaml)
 ```bash

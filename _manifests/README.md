@@ -2,7 +2,11 @@
 
 ### [apply.sh](apply.sh)
 
-Comines the result of helm templating with the static manifests and saves to the deployment and patches folders.
+Combines the result of helm templating with the static manifests and saves to the deployment and patches folders.
+
+### [update.sh](patches/update.sh)
+
+Runs helm template for select charts and updates the static manifests.
 
 ### [Apps](apps)
 

@@ -32,7 +32,7 @@ templateAndBuild() {
 	helm template --no-hooks --name-template "$1" -f $helm_values ./patches/helm/$2 --output-dir "$temp_dir"
 	mv $templates_dir/* $3
 	rm -r "$templates_dir"
-	cp -r patches/$2/* $3
+	cp -r patches/kustomize/$2/* $3
 	kustomize build $3 | yq -i "with(.cluster.inlineManifests.[] | select(.name==\"$4\"); .contents=load_str(\"/dev/stdin\"))" ../patches/$5
 }
 
@@ -57,4 +57,4 @@ templateAndBuild "cilium" $cilium_folder $cilium_dir "kube-system" "cilium.yaml"
 rm -r $temp_dir
 
 echo "Creating istio patch"
-kustomize build patches/istio | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="istio"); .contents=load_str("/dev/stdin"))' ../patches/istio.yaml
+kustomize build patches/kustomize/istio | yq -i 'with(.cluster.inlineManifests.[] | select(.name=="istio"); .contents=load_str("/dev/stdin"))' ../patches/istio.yaml
