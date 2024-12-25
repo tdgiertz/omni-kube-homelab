@@ -68,6 +68,7 @@ brew install helm
 ```
 
 # Components
+- [ksops](https://github.com/viaduct-ai/kustomize-sops) - A [sops](https://github.com/getsops/sops) implementation using Kustomize and ArgoCD deployed using a [patch](_manifests/patches/kustomize/argocd/argo-cd-repo-server-ksops-patch.yaml). Secrets are encrypted locally using [Age](https://github.com/FiloSottile/age) and commited to the git repo. ArgoCD uses the private key stored in the cluster to decrypt the secrets and create the Kubernetes secrets.
 - [Cilium](https://cilium.io/) - CNI, LB, KubeProxy replacement using either L2 announcements or BGP as configured with use_cilium_bgp in [apply.sh]( _manifests/apply.sh)
 - [Istio](https://istio.io/) - Gateway API & service mesh enabled (Cilium can be used for gateway API as well however, it currently lacks support for the TCPRoute which is used for accessing Postgres outside of the cluster).
 - [Kiali](https://kiali.io/) - Istio Service Mesh visualization
