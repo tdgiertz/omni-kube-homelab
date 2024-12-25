@@ -97,7 +97,9 @@ Create the Age key for use with [ksops](https://github.com/viaduct-ai/kustomize-
 age-keygen -o age.agekey
 cp age.agekey ~/.config/sops/age/keys.txt
 ```
-Update the values in the [values.yaml](_manifests/apps/helm/values.yaml), run apply.sh and commit the files created in the [deployment](deployment) folder to git. The deployment folder will be watched by ArgoCD setup within the [bootstrap]( _manifests/patches/helm/argocd/templates/bootstrap-app-set.yaml) manifest.
+Update the values in the [values.yaml](_manifests/apps/helm/values.yaml), run apply.sh and commit the files created in the [deployment](deployment) folder to git.
+
+Apply.sh will handle running helm to combine the templates with values, encrypt secrets (secret.enc.yaml) and move the manifests to the deployment and patches folders. The deployment folder will be watched by ArgoCD setup within the [bootstrap]( _manifests/patches/helm/argocd/templates/bootstrap-app-set.yaml) manifest.
 ```bash
 chmod u+x _manifests/apply.sh
 ./_manifests/apply.sh
