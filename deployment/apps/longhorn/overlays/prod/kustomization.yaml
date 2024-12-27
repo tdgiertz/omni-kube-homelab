@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+
+patches:
+  - path: http-route.yaml
+
+generators:
+  - secret-generator.yaml

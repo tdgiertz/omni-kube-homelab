@@ -11,9 +11,9 @@ spec:
   issuerRef:
     name: domain-cert-issuer
     kind: ClusterIssuer
-  commonName: "*.apps.timgiertz.com"
+  commonName: "*.apps.example.com"
   dnsNames:
-    - "*.apps.timgiertz.com"
+    - "*.apps.example.com"
   secretName: apps-domain-tls
 ---
 # Source: deployment/templates/apps/shared-default-gateway/gateway.yaml
@@ -28,7 +28,7 @@ spec:
   gatewayClassName: istio
   listeners:
     - name: shared-http
-      hostname: "*.apps.timgiertz.com"
+      hostname: "*.apps.example.com"
       protocol: HTTP
       port: 80
       allowedRoutes:
@@ -44,7 +44,7 @@ spec:
         - group: gateway.networking.k8s.io
           kind: TCPRoute
     - name: shared-https
-      hostname: "*.apps.timgiertz.com"
+      hostname: "*.apps.example.com"
       protocol: HTTPS
       port: 443
       allowedRoutes:
@@ -56,7 +56,7 @@ spec:
           kind: Secret
           name: apps-domain-tls
     - name: shared-tls
-      hostname: "*.apps.timgiertz.com"
+      hostname: "*.apps.example.com"
       protocol: TLS
       port: 443
       allowedRoutes:
@@ -64,36 +64,3 @@ spec:
           from: All
       tls:
         mode: Passthrough
-# ---
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   name: https-upgrade
----
-# Source: deployment/templates/apps/shared-default-gateway/gateway.yaml
-kind: HTTPRoute
-apiVersion: gateway.networking.k8s.io/v1beta1
-metadata:
-  name: https-upgrade
-  namespace: default
-  labels:
-    https-upgrade: "true"
-spec:
-  parentRefs:
-  - group: gateway.networking.k8s.io
-    namespace: default
-    name: shared-default-gateway
-    kind: Gateway
-    sectionName: shared-http
-  hostnames:
-    - "*.apps.timgiertz.com"
-  rules:
-  - filters:
-    - type: RequestRedirect
-      requestRedirect:
-        scheme: https
-        statusCode: 301
-    matches:	
-      - path:	
-          type: PathPrefix	
-          value: /

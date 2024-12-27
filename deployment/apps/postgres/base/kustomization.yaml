@@ -3,6 +3,4 @@ namespace: postgres-dev
 resources:
   - namespace.yaml
   - postgres.yaml
-
-generators:
-  - secret-generator.yaml
+  - tcp-route.yaml

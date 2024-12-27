@@ -13,7 +13,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - dashboard.apps.timgiertz.com
+  - dashboard.apps.example.com
   rules:
   - matches:
     - path:

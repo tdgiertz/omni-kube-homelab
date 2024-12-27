@@ -3,12 +3,10 @@ namespace: longhorn-system
 resources:
   - https://raw.githubusercontent.com/longhorn/longhorn/v1.7.2/deploy/longhorn.yaml
   - service.yaml
+  - http-route.yaml
 
 patches:
   - path: namespace.yaml
     target:
       kind: Namespace
   - path: longhorn-default-setting.yaml
-
-generators:
-  - secret-generator.yaml

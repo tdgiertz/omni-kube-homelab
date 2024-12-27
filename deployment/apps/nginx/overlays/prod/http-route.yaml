@@ -1,10 +1,7 @@
----
-# Source: deployment/templates/apps/node-identifier/http-route.yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: node-identifier-app-http
-  namespace: node-identifier
+  name: http-app-1
 spec:
   parentRefs:
   - group: gateway.networking.k8s.io
@@ -13,7 +10,7 @@ spec:
     namespace: default
     sectionName: shared-https
   hostnames:
-  - id.apps.timgiertz.com
+  - test.apps.timgiertz.com
   rules:
   - matches:
     - path:	
@@ -22,6 +19,6 @@ spec:
     backendRefs:
     - group: ''
       kind: Service
-      name: node-identifier-service
+      name: my-nginx-service
       port: 80
       weight: 1
