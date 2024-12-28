@@ -26123,7 +26123,7 @@ cluster:
               - list:
                   elements:
                   - branch: rework-config
-                    repoPath: deployment/*/*
+                    repoPath: deployment/*/*/overlays/prod
                     repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
               - git:
                   directories:
