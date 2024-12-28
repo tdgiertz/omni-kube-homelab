@@ -11,7 +11,7 @@ Install [brew](https://docs.brew.sh/Homebrew-on-Linux)
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-- arm64 workaround
+- arm64 ([unsupported](https://docs.brew.sh/Homebrew-on-Linux#arm-unsupported))
 ```bash
 sudo apt-get install build-essential procps curl file git
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip-components 1 -C homebrew
