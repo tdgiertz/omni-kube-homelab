@@ -3,6 +3,7 @@ resources:
   - values.yaml
 
 patches:
+  - path: gateway.yaml
   - path: http-route.yaml
 
 replacements:

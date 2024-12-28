@@ -8,19 +8,3 @@ spec:
   commonName: "*.apps.timgiertz.com"
   dnsNames:
     - "*.apps.timgiertz.com"
-# ---
-# apiVersion: gateway.networking.k8s.io/v1
-# kind: Gateway
-# metadata:
-#   name: shared-default-gateway
-#   namespace: default
-# spec:
-#   gatewayClassName: istio
-#   listeners:
-#     - name: shared-http
-#       hostname: "*.apps.timgiertz.com"
-#     - name: shared-https
-#       hostname: "*.apps.timgiertz.com"
-#     - name: shared-tls
-#       hostname: "*.apps.timgiertz.com"
-
