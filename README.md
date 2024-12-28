@@ -68,8 +68,8 @@ brew install helm
 ```
 
 # Components
-- [ksops](https://github.com/viaduct-ai/kustomize-sops) - A [sops](https://github.com/getsops/sops) implementation using Kustomize and ArgoCD deployed using a [patch](_manifests/patches/kustomize/argocd/argo-cd-repo-server-ksops-patch.yaml). Secrets are encrypted locally using [Age](https://github.com/FiloSottile/age) and commited to the git repo. ArgoCD uses the private key stored in the cluster to decrypt the secrets and create the Kubernetes secrets.
-- [Cilium](https://cilium.io/) - CNI, LB, KubeProxy replacement using either L2 announcements or BGP as configured with use_cilium_bgp in [apply.sh]( _manifests/apply.sh)
+- [ksops](https://github.com/viaduct-ai/kustomize-sops) - A [sops](https://github.com/getsops/sops) implementation using Kustomize and ArgoCD deployed using a [patch](_initial-setup/patches/argocd/argo-cd-repo-server-ksops-patch.yaml). Secrets are encrypted locally using [Age](https://github.com/FiloSottile/age) and commited to the git repo. ArgoCD uses the private key stored in the cluster to decrypt the secrets and create the Kubernetes secrets.
+- [Cilium](https://cilium.io/) - CNI, LB, KubeProxy replacement using either L2 announcements or BGP as configured with use_cilium_bgp in [setup.sh]( _initial-setup/setup.sh)
 - [Istio](https://istio.io/) - Gateway API & service mesh enabled (Cilium can be used for gateway API as well however, it currently lacks support for the TCPRoute which is used for accessing Postgres outside of the cluster).
 - [Kiali](https://kiali.io/) - Istio Service Mesh visualization
 - [Longhorn](https://longhorn.io/) - CSI for distributed node storage
@@ -97,10 +97,10 @@ cp age.agekey ~/.config/sops/age/keys.txt
 ```
 Update the values within the manifests in the [config](_initial-setup/config) folder and [setup.sh](_initial-setup/setup.sh), run setup.sh and commit the files updated in the [deployment](deployment) folder to git.
 
-Setup.sh will handle copying manifests from the [config](_initial-setup/config) folder, encrypting secrets (secret.enc.yaml) and changing . The deployment folder will be watched by ArgoCD setup within the [bootstrap]( _manifests/patches/helm/argocd/templates/bootstrap-app-set.yaml) manifest.
+Setup.sh will handle copying manifests from the [config](_initial-setup/config) folder, encrypting secrets (secret.enc.yaml) and changing . The deployment folder will be watched by ArgoCD setup within the [bootstrap](_initial-setup/patches/argocd/bootstrap-app-set.yaml) manifest.
 ```bash
-chmod u+x _manifests/apply.sh
-./_manifests/apply.sh
+chmod u+x _initial-setup/setup.sh
+./_initial-setup/setup.sh
 ```
 Create the cluster
 ```bash
