@@ -1,5 +1,6 @@
 creation_rules:
-  - encrypted_regex: "^(data|stringData|acme)$"
+  - path_regex: deployment\/apps\/.*\/overlays\/prod\/[a-zA-Z0-9]*\.enc\.yaml
+    encrypted_regex: "^(data|stringData|acme)$"
     mac_only_encrypted: true
     age: >-
       age1cxfnu9czwc2hlwdjpx29ps4p5gu4tksxl40zff425vctpvpy8edqmu3ryp
