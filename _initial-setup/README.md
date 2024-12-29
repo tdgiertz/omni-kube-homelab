@@ -1,4 +1,6 @@
-## Manifest directory structure
+## Initial-setup directory structure
+
+The contents can be used to configure a new cluster, update a cluster or just learn the locations of manifests to configure.
 
 ### [setup.sh](setup.sh)
 
