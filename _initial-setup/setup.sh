@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 ### Configurable values
 use_cilium_bgp=true # true => use Cilium with BGP, false => use Cilium with L2 announcements
 hostname="apps.timgiertz.com" # hostname with subdomain to be appended to all hostnames in app manifessts
-repoBranch="rework-config"
+repoBranch="main"
 repoPath="deployment/*/*/overlays/prod"
 repoURL="https://github.com/tdgiertz/omni-kube-homelab.git"
 ###

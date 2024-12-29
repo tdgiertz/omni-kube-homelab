@@ -26122,7 +26122,7 @@ cluster:
               generators:
               - list:
                   elements:
-                  - branch: rework-config
+                  - branch: main
                     repoPath: deployment/*/*/overlays/prod
                     repoURL: https://github.com/tdgiertz/omni-kube-homelab.git
               - git:
