@@ -1,0 +1,26 @@
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: https-upgrade
+  namespace: default
+  labels:
+    https-upgrade: "true"
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    namespace: default
+    name: shared-default-gateway
+    kind: Gateway
+    sectionName: shared-http
+  hostnames:
+    - "*.apps.example.com"
+  rules:
+  - filters:
+    - type: RequestRedirect
+      requestRedirect:
+        scheme: https
+        statusCode: 301
+    matches:	
+      - path:	
+          type: PathPrefix	
+          value: /

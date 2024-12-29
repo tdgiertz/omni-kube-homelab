@@ -1,0 +1,27 @@
+---
+# Source: deployment/templates/apps/kiali/http-route.yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: kiali-http-app
+  namespace: istio-system
+spec:
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: shared-default-gateway
+    namespace: default
+    sectionName: shared-https
+  hostnames:
+  - kiali.apps.example.com
+  rules:
+  - matches:
+    - path:	
+        type: PathPrefix	
+        value: /
+    backendRefs:
+    - group: ''
+      kind: Service
+      name: kiali
+      port: 20001
+      weight: 1

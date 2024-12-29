@@ -1,0 +1,10 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: apps-domain-tls
+  namespace: default
+spec:
+  commonName: "*.apps.timgiertz.com"
+  dnsNames:
+    - "*.apps.timgiertz.com"

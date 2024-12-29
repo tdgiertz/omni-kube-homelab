@@ -1,0 +1,11 @@
+- source:
+    kind: ConfigMap
+    name: default-gateway-values
+    fieldPath: data.hostname
+  targets:
+  - select:
+      kind: Gateway
+    fieldPaths:
+      - spec.listeners.*.hostname
+    options:
+      create: false

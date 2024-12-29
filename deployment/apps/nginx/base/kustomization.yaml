@@ -1,0 +1,6 @@
+namespace: nginx-dev
+
+resources:
+  - namespace.yaml
+  - nginx.yaml
+  - http-route.yaml

@@ -11,7 +11,7 @@ Install [brew](https://docs.brew.sh/Homebrew-on-Linux)
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-- arm64 workaround
+- arm64 ([unsupported](https://docs.brew.sh/Homebrew-on-Linux#arm-unsupported))
 ```bash
 sudo apt-get install build-essential procps curl file git
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip-components 1 -C homebrew
@@ -68,8 +68,8 @@ brew install helm
 ```
 
 # Components
-- [ksops](https://github.com/viaduct-ai/kustomize-sops) - A [sops](https://github.com/getsops/sops) implementation using Kustomize and ArgoCD deployed using a [patch](_manifests/patches/kustomize/argocd/argo-cd-repo-server-ksops-patch.yaml). Secrets are encrypted locally using [Age](https://github.com/FiloSottile/age) and commited to the git repo. ArgoCD uses the private key stored in the cluster to decrypt the secrets and create the Kubernetes secrets.
-- [Cilium](https://cilium.io/) - CNI, LB, KubeProxy replacement using either L2 announcements or BGP as configured with use_cilium_bgp in [apply.sh]( _manifests/apply.sh)
+- [ksops](https://github.com/viaduct-ai/kustomize-sops) - A [sops](https://github.com/getsops/sops) implementation using Kustomize and ArgoCD deployed using a [patch](_initial-setup/patches/argocd/argo-cd-repo-server-ksops-patch.yaml). Secrets are encrypted locally using [Age](https://github.com/FiloSottile/age) and commited to the git repo. ArgoCD uses the private key stored in the cluster to decrypt the secrets and create the Kubernetes secrets.
+- [Cilium](https://cilium.io/) - CNI, LB, KubeProxy replacement using either L2 announcements or BGP as configured with use_cilium_bgp in [setup.sh]( _initial-setup/setup.sh)
 - [Istio](https://istio.io/) - Gateway API & service mesh enabled (Cilium can be used for gateway API as well however, it currently lacks support for the TCPRoute which is used for accessing Postgres outside of the cluster).
 - [Kiali](https://kiali.io/) - Istio Service Mesh visualization
 - [Longhorn](https://longhorn.io/) - CSI for distributed node storage
@@ -79,16 +79,13 @@ brew install helm
 - [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
 - node-identifier - App for testing the configuration and load balancing. It returns the node and pod name (on which the request was handled) formatted as JSON.
 
-# Folder structure (also see [here](_manifests/README.md))
+# Folder structure (also see [here](_initial-setup/README.md))
 ```sh
-📁 _manifests        # All manifests used by the cluster through apps and patches
-├──📁 apps           # Manifests in subdirectories are combined and and stored in the deployment folder
-│  ├──📁 helm        # Partial set of manifests run through helm template to apply variables
-│  └──📁 kustomize   # Static partial set of manifests
-├──📁 patches        # Manifests in subdirectories are combined and stored in the patches folder
-│  ├──📁 helm        # Partial set of manifests run through helm template to apply variables
-│  └──📁 kustomize   # Static partial set of manifests
+📁 _initial-setup    # All manifests used by the cluster through apps and patches
+├──📁 config         # Manifests to be configured before copying to the deployment folder
+├──📁 patches        # Manifests in full form to be configured and transformed into a Talos patch
 📁 deployment        # Directory watched by ArgoCD to deploy applications
+│  └──📁 apps        # Application manifests specific to the ArgoCD project "apps"
 📁 patches           # Patches applied though Omni to the cluster
 ```
 
@@ -98,12 +95,12 @@ Create the Age key for use with [ksops](https://github.com/viaduct-ai/kustomize-
 age-keygen -o age.agekey
 cp age.agekey ~/.config/sops/age/keys.txt
 ```
-Update the values in the [values.yaml](_manifests/apps/helm/values.yaml), run apply.sh and commit the files created in the [deployment](deployment) folder to git.
+Update the values within the manifests in the [config](_initial-setup/config) folder and [setup.sh](_initial-setup/setup.sh), run setup.sh and commit the files updated in the [deployment](deployment) folder to git.
 
-Apply.sh will handle running helm to combine the templates with values, encrypt secrets (secret.enc.yaml) and move the manifests to the deployment and patches folders. The deployment folder will be watched by ArgoCD setup within the [bootstrap]( _manifests/patches/helm/argocd/templates/bootstrap-app-set.yaml) manifest.
+Setup.sh will handle copying manifests from the [config](_initial-setup/config) folder, encrypting secrets (secret.enc.yaml) and changing . The deployment folder will be watched by ArgoCD setup within the [bootstrap](_initial-setup/patches/argocd/bootstrap-app-set.yaml) manifest.
 ```bash
-chmod u+x _manifests/apply.sh
-./_manifests/apply.sh
+chmod u+x _initial-setup/setup.sh
+./_initial-setup/setup.sh
 ```
 Create the cluster
 ```bash

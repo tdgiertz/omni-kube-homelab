@@ -1,0 +1,10 @@
+resources:
+  - ../../base
+  - values.yaml
+
+patches:
+  - path: gateway.yaml
+  - path: http-route.yaml
+
+replacements:
+  - path: patch.yaml

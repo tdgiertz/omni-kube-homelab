@@ -1,0 +1,44 @@
+---
+# Source: deployment/templates/apps/nginx/nginx.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx-service
+  labels:
+    app: nginx
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  selector:
+    app: my-nginx
+---
+# Source: deployment/templates/apps/nginx/nginx.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx-deployment
+  labels:
+    app: my-nginx
+spec:
+  selector:
+    matchLabels:
+      app: my-nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+    spec:
+      containers:
+      - name: my-nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "2Gi"
+      securityContext:
+        runAsNonRoot: false
