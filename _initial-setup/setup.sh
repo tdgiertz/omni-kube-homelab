@@ -12,11 +12,13 @@ repoURL="https://github.com/tdgiertz/omni-kube-homelab.git"
 
 copyFromTo=(
     '{ "copyFrom": "./config/cert-manager-secret.yaml", "copyTo": "../deployment/apps/cert-manager/overlays/prod/secret.enc.yaml", "doEncrypt": true }'
+    '{ "copyFrom": "./config/longhorn-default-setting.yaml", "copyTo": "../deployment/apps/longhorn/base/longhorn-default-setting.yaml", "doEncrypt": false }'
     '{ "copyFrom": "./config/longhorn-secret.yaml", "copyTo": "../deployment/apps/longhorn/overlays/prod/secret.enc.yaml", "base64CheckPaths": [".data.AWS_ACCESS_KEY_ID", ".data.AWS_SECRET_ACCESS_KEY", ".data.AWS_ENDPOINTS"], "doEncrypt": true }'
     '{ "copyFrom": "./config/postgres-secret.yaml", "copyTo": "../deployment/apps/postgres/overlays/prod/secret.enc.yaml", "base64CheckPaths": [".data.username", ".data.password"], "doEncrypt": true }'
 )
 
 isBase64EncodedRegex="^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)?$"
+isValidCharRegex="^.*$"
 
 for element in "${copyFromTo[@]}"; do
     copyFrom=$(echo "$element" | jq -r '.copyFrom')
@@ -33,8 +35,14 @@ for element in "${copyFromTo[@]}"; do
         echo "Updating manifest $copyTo"
         for checkPath in "${base64Checks[@]}"; do
             valueFromFile=$(yq $checkPath $copyTo)
+            decodedValueFromFile=$valueFromFile
 
-            if ! [[ "$valueFromFile" =~ $isBase64EncodedRegex ]]; then
+            if [[ "$valueFromFile" =~ $isBase64EncodedRegex ]]; then
+                decodedValueFromFile=$(echo -n $valueFromFile | base64 --decode)
+            fi
+
+            # If the result of a base64 decode is characters outside of the regex, assume it is not already encoded
+            if ! [[ "$decodedValueFromFile" =~ $isValidCharRegex ]]; then
                 encodedString=$(echo -n "$valueFromFile" | base64)
                 yq "${checkPath}=\"$encodedString\"" -i $copyTo
             fi
