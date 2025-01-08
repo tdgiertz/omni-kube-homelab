@@ -36,13 +36,15 @@ for element in "${copyFromTo[@]}"; do
         for checkPath in "${base64Checks[@]}"; do
             valueFromFile=$(yq $checkPath $copyTo)
             decodedValueFromFile=$valueFromFile
-
+            
+            isBase64=false
             if [[ "$valueFromFile" =~ $isBase64EncodedRegex ]]; then
                 decodedValueFromFile=$(echo -n $valueFromFile | base64 --decode)
+                isBase64=true
             fi
 
             # If the result of a base64 decode is characters outside of the regex, assume it is not already encoded
-            if ! [[ "$decodedValueFromFile" =~ $isValidCharRegex ]]; then
+            if ! [ "$isBase64" = true ] || ! [[ "$decodedValueFromFile" =~ $isValidCharRegex ]]; then
                 encodedString=$(echo -n "$valueFromFile" | base64)
                 yq "${checkPath}=\"$encodedString\"" -i $copyTo
             fi
