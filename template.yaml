@@ -7,7 +7,7 @@ labels:
 kubernetes:
   version: v1.32.0
 talos:
-  version: v1.9.0
+  version: v1.9.1
 features:
   enableWorkloadProxy: false
   backupConfiguration:
@@ -46,6 +46,8 @@ machineClass:
 patches:
   - name: longhorn-mount
     file: patches/longhorn-sdb.yaml
+  - name: enable-cilium
+    file: patches/cilium-enable.yaml
 ---
 kind: Workers
 name: worker-node-nvme
@@ -55,3 +57,5 @@ machineClass:
 patches:
   - name: longhorn-mount
     file: patches/longhorn-nvme.yaml
+  - name: cilium-bgp-label
+    file: patches/cilium-bgp-label.yaml

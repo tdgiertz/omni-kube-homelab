@@ -4,17 +4,17 @@ metadata:
   name: cilium-bgp
 spec:
   nodeSelector:
-    matchExpressions:
-       - {key: somekey, operator: NotIn, values: ['never-used-value']}
+    matchLabels:
+      bgp.cilium.io/enabled: "true"
   bgpInstances:
-  - name: "instance-65015"
-    localASN: 65015
+  - localASN: 65015
+    name: instance-65015
     peers:
-    - name: "peer-65014"
+    - name: peer-65014
       peerASN: 65014
       peerAddress: 192.168.100.1
       peerConfigRef:
-        name: "cilium-peer"
+        name: cilium-peer
 ---
 apiVersion: cilium.io/v2alpha1
 kind: CiliumBGPPeerConfig
@@ -22,11 +22,11 @@ metadata:
   name: cilium-peer
 spec:
   families:
-    - afi: ipv4
-      safi: unicast
-      advertisements:
-        matchLabels:
-          advertise: "bgp"
+  - advertisements:
+      matchLabels:
+        advertise: bgp
+    afi: ipv4
+    safi: unicast
   gracefulRestart:
     enabled: true
     restartTimeSeconds: 30
@@ -38,24 +38,30 @@ spec:
 apiVersion: cilium.io/v2alpha1
 kind: CiliumBGPAdvertisement
 metadata:
-  name: cilium-advert
   labels:
     advertise: bgp
+  name: cilium-advert
 spec:
+  nodeSelector:
+    matchLabels:
+      bgp.cilium.io/enabled: "true"
   advertisements:
-    - advertisementType: "PodCIDR"
-    - advertisementType: "Service"
-      service:
-        addresses:
-          - LoadBalancerIP
-      selector:
-        matchExpressions:
-        - {key: somekey, operator: NotIn, values: ['never-used-value']}
+  - advertisementType: PodCIDR
+  - advertisementType: Service
+    selector:
+      matchExpressions:
+      - key: somekey
+        operator: NotIn
+        values:
+        - never-used-value
+    service:
+      addresses:
+      - LoadBalancerIP
 ---
-apiVersion: "cilium.io/v2alpha1"
+apiVersion: cilium.io/v2alpha1
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: "cilium-lb-pool-01"
+  name: cilium-lb-pool-01
 spec:
   blocks:
-  - cidr: "192.168.100.128/25"
+  - cidr: 192.168.100.128/25

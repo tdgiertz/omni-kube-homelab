@@ -1,0 +1,4 @@
+machine:
+  kubelet:
+    extraArgs:
+      node-labels: "bgp.cilium.io/enabled=true"
