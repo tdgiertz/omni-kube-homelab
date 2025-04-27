@@ -35382,7 +35382,7 @@ cluster:
                 averageUtilization: 80
                 type: Utilization
             type: Resource
-          minReplicas: 1
+          minReplicas: 3
           scaleTargetRef:
             apiVersion: apps/v1
             kind: Deployment

@@ -3,6 +3,7 @@ kind: Namespace
 metadata:
   name: longhorn-system
   labels:
+    # https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#pod-security
     pod-security.kubernetes.io/enforce: privileged
     pod-security.kubernetes.io/enforce-version: latest
     pod-security.kubernetes.io/audit: privileged
